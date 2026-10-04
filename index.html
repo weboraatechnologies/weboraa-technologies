@@ -676,11 +676,39 @@
     }
 
     /* ==========================================================================
-       5. Development Process Section
+       5. Process & Delivery Framework Section (High-End SaaS Agency Layout)
        ========================================================================== */
     .process-section {
-      background: var(--white);
+      background: linear-gradient(180deg, #FFFFFF 0%, #F5F8FC 100%);
+      border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    .process-timeline-wrap {
+      position: relative;
+    }
+
+    .process-timeline-bar {
+      position: absolute;
+      top: 56px;
+      left: 80px;
+      right: 80px;
+      height: 2px;
+      background: #E2E8F0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .process-timeline-bar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, #1677FF 0%, #08B8D9 50%, #1677FF 100%);
+      opacity: 0.35;
     }
 
     .process-grid {
@@ -688,45 +716,152 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 24px;
       position: relative;
+      z-index: 2;
     }
 
     .process-card {
       background: var(--white);
       border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 30px 24px;
+      border-radius: 16px;
+      padding: 32px 24px;
       display: flex;
       flex-direction: column;
       position: relative;
-      box-shadow: var(--shadow-card);
+      box-shadow: 0 2px 8px rgba(13, 27, 42, 0.03), 0 1px 2px rgba(13, 27, 42, 0.02);
+      transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+      height: 100%;
     }
 
-    .step-number-pill {
-      display: inline-flex;
+    .process-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(22, 119, 255, 0.4);
+      box-shadow: 0 12px 28px -4px rgba(22, 119, 255, 0.12), 0 4px 10px rgba(13, 27, 42, 0.04);
+    }
+
+    .process-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22px;
+    }
+
+    .process-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background: #EFF6FF;
+      border: 1px solid #DBEAFE;
+      color: var(--primary);
+      display: flex;
       align-items: center;
       justify-content: center;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: #EFF6FF;
-      color: var(--primary);
+      transition: all 0.25s ease;
+      flex-shrink: 0;
+    }
+
+    .process-icon-box svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--primary);
+      stroke-width: 2;
+      transition: transform 0.25s ease;
+    }
+
+    .process-card:hover .process-icon-box {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: var(--white);
+    }
+
+    .process-card:hover .process-icon-box svg {
+      stroke: var(--white);
+      transform: scale(1.08);
+    }
+
+    .process-step-badge {
       font-family: var(--font-mono);
-      font-size: 0.84rem;
+      font-size: 0.85rem;
       font-weight: 700;
-      margin-bottom: 18px;
+      color: #64748B;
+      background: #F1F5F9;
+      border: 1px solid #E2E8F0;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      transition: all 0.25s ease;
+    }
+
+    .process-card:hover .process-step-badge {
+      color: var(--primary);
+      background: #EFF6FF;
+      border-color: #BFDBFE;
+    }
+
+    .process-step-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
     }
 
     .process-step-title {
-      font-size: 1.12rem;
-      font-weight: 700;
+      font-size: 1.22rem;
+      font-weight: 800;
       color: var(--text-heading);
-      margin-bottom: 10px;
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+      line-height: 1.3;
+      transition: color 0.2s ease;
+    }
+
+    .process-card:hover .process-step-title {
+      color: var(--primary);
     }
 
     .process-step-desc {
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       color: var(--text-body);
-      line-height: 1.55;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Process Bottom CTA Box */
+    .process-cta-box {
+      margin-top: 48px;
+      padding: 32px 36px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      box-shadow: 0 4px 16px rgba(13, 27, 42, 0.03);
+      max-width: 980px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .process-cta-title {
+      font-size: 1.32rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 6px;
+      letter-spacing: -0.015em;
+    }
+
+    .process-cta-desc {
+      font-size: 0.98rem;
+      color: var(--text-body);
+      margin: 0;
+    }
+
+    .process-cta-action {
+      flex-shrink: 0;
     }
 
 
@@ -1288,6 +1423,9 @@
       .why-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+      .process-timeline-bar {
+        display: none;
+      }
       .process-grid {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -1324,6 +1462,16 @@
       }
       .service-name {
         font-size: 1.15rem;
+      }
+      .process-cta-box {
+        flex-direction: column;
+        text-align: center;
+        padding: 26px 20px;
+        gap: 18px;
+      }
+      .process-cta-action,
+      .process-cta-action .btn {
+        width: 100%;
       }
       .contact-card-wrapper {
         grid-template-columns: 1fr;
@@ -1823,54 +1971,116 @@
     </section>
 
     <!-- ======================================================================
-         4. Development Process Section
+         4. Process Section (High-End SaaS Agency 4-Step Journey)
          ====================================================================== -->
     <section class="process-section section-padding" id="process">
       <div class="container">
         
         <div class="section-header text-center">
-          <span class="section-eyebrow">DELIVERY FRAMEWORK</span>
-          <h2 class="section-title">A structured path from idea to deployment.</h2>
+          <span class="section-eyebrow">OUR PROCESS</span>
+          <h2 class="section-title">From Idea to Impact.</h2>
           <p class="section-desc">
-            A transparent, four-stage delivery process keeping your project on schedule and aligned with expectations.
+            Four simple steps. One seamless journey.
           </p>
         </div>
 
-        <div class="process-grid">
-          <!-- Step 1 -->
-          <div class="process-card">
-            <div class="step-number-pill">1</div>
-            <h3 class="process-step-title">Discover</h3>
-            <p class="process-step-desc">
-              We evaluate your business requirements, operational challenges, target audience, and functional scope.
-            </p>
-          </div>
+        <div class="process-timeline-wrap">
+          <!-- Subtle progression line connecting cards on desktop -->
+          <div class="process-timeline-bar" aria-hidden="true"></div>
 
-          <!-- Step 2 -->
-          <div class="process-card">
-            <div class="step-number-pill">2</div>
-            <h3 class="process-step-title">Plan and Design</h3>
-            <p class="process-step-desc">
-              We produce wireframes, interface designs, database schemas, and establish agreed milestone timelines.
-            </p>
-          </div>
+          <div class="process-grid">
+            
+            <!-- Step 01: Discover -->
+            <div class="process-card">
+              <div class="process-card-header">
+                <div class="process-icon-box" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <circle cx="12" cy="12" r="6"></circle>
+                    <circle cx="12" cy="12" r="2"></circle>
+                  </svg>
+                </div>
+                <span class="process-step-badge">01</span>
+              </div>
+              <div class="process-step-tag">Step 01</div>
+              <h3 class="process-step-title">DISCOVER</h3>
+              <p class="process-step-desc">
+                Understand your goals, challenges, and requirements to define the right solution.
+              </p>
+            </div>
 
-          <!-- Step 3 -->
-          <div class="process-card">
-            <div class="step-number-pill">3</div>
-            <h3 class="process-step-title">Develop and Test</h3>
-            <p class="process-step-desc">
-              We write clean, maintainable code, integrate third-party APIs, and perform thorough cross-device QA testing.
-            </p>
-          </div>
+            <!-- Step 02: Design -->
+            <div class="process-card">
+              <div class="process-card-header">
+                <div class="process-icon-box" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                    <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                    <path d="M2 2l7.586 7.586"></path>
+                    <circle cx="11" cy="11" r="2"></circle>
+                  </svg>
+                </div>
+                <span class="process-step-badge">02</span>
+              </div>
+              <div class="process-step-tag">Step 02</div>
+              <h3 class="process-step-title">DESIGN</h3>
+              <p class="process-step-desc">
+                Create intuitive experiences, plan the technical approach, and establish a clear roadmap.
+              </p>
+            </div>
 
-          <!-- Step 4 -->
-          <div class="process-card">
-            <div class="step-number-pill">4</div>
-            <h3 class="process-step-title">Launch and Support</h3>
-            <p class="process-step-desc">
-              We deploy to your production environment, configure domains and SSL, and deliver agreed ongoing maintenance.
-            </p>
+            <!-- Step 03: Build -->
+            <div class="process-card">
+              <div class="process-card-header">
+                <div class="process-icon-box" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                  </svg>
+                </div>
+                <span class="process-step-badge">03</span>
+              </div>
+              <div class="process-step-tag">Step 03</div>
+              <h3 class="process-step-title">BUILD</h3>
+              <p class="process-step-desc">
+                Develop, integrate, and rigorously test every detail for quality and reliability.
+              </p>
+            </div>
+
+            <!-- Step 04: Launch -->
+            <div class="process-card">
+              <div class="process-card-header">
+                <div class="process-icon-box" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
+                    <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
+                    <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path>
+                    <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>
+                  </svg>
+                </div>
+                <span class="process-step-badge">04</span>
+              </div>
+              <div class="process-step-tag">Step 04</div>
+              <h3 class="process-step-title">LAUNCH</h3>
+              <p class="process-step-desc">
+                Deploy your solution, ensure a smooth launch, and support your continued growth.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Bottom CTA area -->
+        <div class="process-cta-box">
+          <div class="process-cta-text">
+            <h3 class="process-cta-title">Ready to bring your idea to life?</h3>
+            <p class="process-cta-desc">Let's create something that moves your business forward.</p>
+          </div>
+          <div class="process-cta-action">
+            <a href="javascript:void(0);" class="btn btn-primary btn-lg" data-open-modal="conversation" data-service="Project Quote">
+              <span>Get a Project Quote</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </a>
           </div>
         </div>
 
