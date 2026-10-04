@@ -1,0 +1,2295 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weboraa Technologies — Digital Solutions Company | Coimbatore, India</title>
+  
+  <script>
+    (function() {
+      try {
+        localStorage.removeItem('weboraa-theme');
+      } catch (e) {}
+      document.documentElement.setAttribute('data-theme', 'light');
+    })();
+  </script>
+  
+  <!-- SEO & Meta Tags -->
+  <meta name="description" content="Weboraa Technologies is a professional digital solutions company in Coimbatore, Tamil Nadu. We engineer websites, e-commerce stores, ERP & business management software, UI/UX design, label printing, and digital marketing.">
+  <meta name="keywords" content="Weboraa Technologies, digital solutions company, software development, website development, e-commerce, ERP software, label printing, UI/UX design, custom software, Coimbatore, Tamil Nadu, India">
+  <meta name="author" content="Weboraa Technologies">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0D1B2A">
+  <link rel="canonical" href="https://weboraa.com/">
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://weboraa.com/">
+  <meta property="og:title" content="Weboraa Technologies — Digital Solutions Built Around Your Business">
+  <meta property="og:description" content="Websites, e-commerce platforms, business software, label printing and digital marketing — tailored to help your business operate better and grow online.">
+  <meta property="og:site_name" content="Weboraa Technologies">
+  <meta property="og:image" content="https://weboraa.com/assets/weboraa-logo-stacked.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Weboraa Technologies — Digital Solutions Company">
+  <meta name="twitter:description" content="Websites, business software, label printing and digital marketing — based in Coimbatore, Tamil Nadu.">
+  <meta name="twitter:image" content="https://weboraa.com/assets/weboraa-logo-stacked.png">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/weboraa-emblem.png">
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       WEBORAA TECHNOLOGIES — B2B DESIGN SYSTEM
+       Palette: Deep Navy (#0D1B2A), Primary Blue (#1677FF), Cyan (#08B8D9),
+       Light Background (#F5F8FC), White (#FFFFFF), Body Text (#526174)
+       ========================================================================== */
+    :root {
+      --navy: #0D1B2A;
+      --navy-light: #1B2A4A;
+      --primary: #1677FF;
+      --primary-hover: #0958D9;
+      --cyan: #08B8D9;
+      --cyan-subtle: rgba(8, 184, 217, 0.08);
+      --bg-light: #F5F8FC;
+      --white: #FFFFFF;
+      --text-heading: #0D1B2A;
+      --text-body: #526174;
+      --text-muted: #8896A6;
+      --border: #E6EAF0;
+      --border-focus: #1677FF;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --radius-full: 9999px;
+      --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --shadow-sm: 0 1px 3px rgba(13, 27, 42, 0.04);
+      --shadow-card: 0 2px 8px rgba(13, 27, 42, 0.04), 0 1px 2px rgba(13, 27, 42, 0.02);
+      --shadow-hover: 0 10px 24px -4px rgba(22, 119, 255, 0.12), 0 2px 6px rgba(13, 27, 42, 0.04);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-main);
+      color: var(--text-body);
+      background-color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Headings & Typography */
+    h1, h2, h3, h4 {
+      color: var(--text-heading);
+      font-family: var(--font-main);
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      color: var(--text-body);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    /* Section Spacing & Anchors */
+    section {
+      scroll-margin-top: 88px;
+    }
+
+    .section-padding {
+      padding: 96px 0;
+    }
+
+    .section-header {
+      margin-bottom: 56px;
+    }
+
+    .section-header.text-center {
+      text-align: center;
+    }
+
+    .section-header.text-center .section-desc {
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: #EFF6FF;
+      border: 1px solid #DBEAFE;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 3.5vw, 2.75rem);
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 16px;
+      letter-spacing: -0.025em;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--text-body);
+      max-width: 640px;
+      line-height: 1.6;
+    }
+
+    /* Primary & Secondary Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-main);
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+      box-shadow: 0 2px 6px rgba(22, 119, 255, 0.2);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+      border-color: var(--primary-hover);
+      color: var(--white);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(22, 119, 255, 0.28);
+    }
+
+    .btn-secondary {
+      background-color: var(--white);
+      color: var(--text-heading);
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--bg-light);
+      border-color: #CBD5E1;
+      color: var(--primary);
+    }
+
+    .btn-sm {
+      padding: 9px 18px;
+      font-size: 0.88rem;
+    }
+
+    .btn-lg {
+      padding: 14px 28px;
+      font-size: 1rem;
+    }
+
+    .btn-block {
+      width: 100%;
+    }
+
+    .btn-arrow {
+      transition: transform 0.2s ease;
+    }
+
+    .btn:hover .btn-arrow {
+      transform: translateX(3px);
+    }
+
+    /* ==========================================================================
+       1. Header & Sticky Navigation
+       ========================================================================== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 76px;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      transition: box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .site-header.is-scrolled {
+      box-shadow: 0 4px 16px rgba(13, 27, 42, 0.06);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .brand-link {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .brand-logo-img {
+      height: 38px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 0.94rem;
+      font-weight: 500;
+      color: var(--text-body);
+      padding: 6px 0;
+      position: relative;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--primary);
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--primary);
+      border-radius: var(--radius-full);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .mobile-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .mobile-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background-color: var(--text-heading);
+      border-radius: 2px;
+      transition: all 0.25s ease;
+    }
+
+    .mobile-toggle.is-active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .mobile-toggle.is-active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .mobile-toggle.is-active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* ==========================================================================
+       2. Hero Section
+       ========================================================================== */
+    /* ==========================================================================
+       2. Hero Section
+       ========================================================================== */
+    .hero-section {
+      padding: 92px 0 88px;
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-light) 100%);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 3.8rem);
+      font-weight: 800;
+      color: var(--text-heading);
+      letter-spacing: -0.03em;
+      line-height: 1.16;
+      margin-bottom: 22px;
+    }
+
+    .hero-title-accent {
+      color: var(--primary);
+    }
+
+    .hero-desc {
+      font-size: 1.15rem;
+      color: var(--text-body);
+      line-height: 1.65;
+      margin-bottom: 34px;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 38px;
+      flex-wrap: wrap;
+    }
+
+    .hero-trust-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 12px 28px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      width: 100%;
+      max-width: 860px;
+    }
+
+    .hero-trust-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: var(--text-body);
+      font-weight: 500;
+    }
+
+    .trust-check-icon {
+      width: 18px;
+      height: 18px;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    /* ==========================================================================
+       3. Main Services Section (Clean Expandable Accordion)
+       ========================================================================== */
+    .services-section {
+      background: var(--white);
+    }
+
+    .services-accordion-wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      border-top: 1px solid var(--border);
+    }
+
+    .service-accordion-item {
+      border-bottom: 1px solid var(--border);
+      transition: background-color 0.2s ease;
+    }
+
+    .service-accordion-item:hover {
+      background-color: #F8FAFC;
+    }
+
+    .service-accordion-item.is-open {
+      background-color: #FAFCFF;
+    }
+
+    .service-accordion-header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 26px 16px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s ease;
+    }
+
+    .service-header-left {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .service-num {
+      font-family: var(--font-mono);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      width: 36px;
+      flex-shrink: 0;
+      transition: color 0.2s ease;
+    }
+
+    .service-accordion-item:hover .service-num,
+    .service-accordion-item.is-open .service-num {
+      color: var(--primary);
+    }
+
+    .service-name {
+      font-size: clamp(1.2rem, 2.3vw, 1.45rem);
+      font-weight: 700;
+      color: var(--text-heading);
+      letter-spacing: -0.015em;
+      transition: color 0.2s ease;
+      margin: 0;
+    }
+
+    .service-accordion-item:hover .service-name,
+    .service-accordion-item.is-open .service-name {
+      color: var(--primary);
+    }
+
+    .service-header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .service-toggle-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      background: var(--white);
+      transition: all 0.25s ease;
+      flex-shrink: 0;
+    }
+
+    .service-toggle-icon svg {
+      width: 18px;
+      height: 18px;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .service-accordion-item:hover .service-toggle-icon {
+      border-color: #CBD5E1;
+      color: var(--primary);
+    }
+
+    .service-accordion-item.is-open .service-toggle-icon {
+      background: #EFF6FF;
+      border-color: #BFDBFE;
+      color: var(--primary);
+    }
+
+    .service-accordion-item.is-open .service-toggle-icon svg {
+      transform: rotate(180deg);
+    }
+
+    .service-accordion-panel {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.38s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+    }
+
+    .service-accordion-item.is-open .service-accordion-panel {
+      max-height: 520px;
+      opacity: 1;
+    }
+
+    .service-panel-inner {
+      padding: 0 16px 32px 76px;
+    }
+
+    .service-panel-desc {
+      font-size: 1.05rem;
+      color: var(--text-body);
+      line-height: 1.65;
+      margin-bottom: 22px;
+      max-width: 820px;
+    }
+
+    .service-pills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      margin-bottom: 26px;
+    }
+
+    .service-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 15px;
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: var(--radius-full);
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: #334155;
+      transition: all 0.2s ease;
+      box-shadow: 0 1px 2px rgba(13, 27, 42, 0.02);
+    }
+
+    .service-pill:hover {
+      background: #EFF6FF;
+      border-color: #BFDBFE;
+      color: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    .service-pill-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    .service-panel-footer {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* ==========================================================================
+       4. Why Choose Weboraa Section
+       ========================================================================== */
+    .why-section {
+      background: var(--bg-light);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .why-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .why-card:hover {
+      border-color: #CBD5E1;
+      transform: translateY(-2px);
+    }
+
+    .why-num-tag {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+
+    .why-card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 12px;
+      line-height: 1.35;
+    }
+
+    .why-card-desc {
+      font-size: 0.92rem;
+      color: var(--text-body);
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       5. Development Process Section
+       ========================================================================== */
+    .process-section {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      position: relative;
+    }
+
+    .process-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 30px 24px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: var(--shadow-card);
+    }
+
+    .step-number-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #EFF6FF;
+      color: var(--primary);
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .process-step-title {
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 10px;
+    }
+
+    .process-step-desc {
+      font-size: 0.9rem;
+      color: var(--text-body);
+      line-height: 1.55;
+    }
+
+
+
+    /* ==========================================================================
+       7. About Weboraa Section
+       ========================================================================== */
+    .about-section {
+      background: var(--white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-narrative p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .about-narrative strong {
+      color: var(--text-heading);
+    }
+
+    .about-pillars-box {
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .pillar-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .pillar-num {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 4px 8px;
+      border-radius: var(--radius-sm);
+      flex-shrink: 0;
+    }
+
+    .pillar-content h4 {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 4px;
+    }
+
+    .pillar-content p {
+      font-size: 0.88rem;
+      color: var(--text-body);
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       8. Dark Navy Call-to-Action Section
+       ========================================================================== */
+    .final-cta-section {
+      background-color: var(--navy);
+      color: var(--white);
+      padding: 96px 0;
+      position: relative;
+    }
+
+    .final-cta-box {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .final-cta-eyebrow {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--cyan);
+      text-transform: uppercase;
+      background: rgba(8, 184, 217, 0.12);
+      border: 1px solid rgba(8, 184, 217, 0.25);
+      padding: 4px 14px;
+      border-radius: var(--radius-full);
+      margin-bottom: 20px;
+    }
+
+    .final-cta-title {
+      font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 18px;
+      letter-spacing: -0.025em;
+    }
+
+    .final-cta-desc {
+      font-size: 1.05rem;
+      color: #CBD5E1;
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+
+    .final-cta-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .final-whatsapp-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: #E2E8F0;
+      text-decoration: none;
+      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: var(--radius-full);
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .final-whatsapp-badge:hover {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.3);
+      color: var(--white);
+    }
+
+    /* ==========================================================================
+       9. Contact Section & B2B Inquiry Form
+       ========================================================================== */
+    .contact-section {
+      background: var(--white);
+    }
+
+    .contact-card-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 56px;
+      align-items: flex-start;
+    }
+
+    .contact-hub-col {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .contact-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #059669;
+      background: #ECFDF5;
+      border: 1px solid #A7F3D0;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      width: fit-content;
+      margin-bottom: 14px;
+    }
+
+    .status-live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10B981;
+    }
+
+    .contact-main-heading {
+      font-size: clamp(2rem, 3.2vw, 2.6rem);
+      font-weight: 800;
+      color: var(--text-heading);
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    .contact-lead-text {
+      font-size: 1rem;
+      color: var(--text-body);
+      line-height: 1.6;
+    }
+
+    .contact-info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .info-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      background: #EFF6FF;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .info-label {
+      font-size: 0.76rem;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+      display: block;
+    }
+
+    .info-link {
+      font-size: 0.96rem;
+      font-weight: 600;
+      color: var(--text-heading);
+      text-decoration: none;
+    }
+
+    .info-link:hover {
+      color: var(--primary);
+    }
+
+    .info-copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--text-body);
+      cursor: pointer;
+      margin-left: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .info-copy-btn:hover {
+      background: #E2E8F0;
+      color: var(--primary);
+    }
+
+    /* Form Panel */
+    .contact-form-panel {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .form-panel-header {
+      margin-bottom: 28px;
+    }
+
+    .form-panel-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 6px;
+    }
+
+    .form-panel-desc {
+      font-size: 0.92rem;
+      color: var(--text-body);
+    }
+
+    .contact-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-field.full-width {
+      grid-column: span 2;
+    }
+
+    .field-label {
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--text-heading);
+    }
+
+    .field-label .req {
+      color: #EF4444;
+    }
+
+    .form-control {
+      width: 100%;
+      font-family: var(--font-main);
+      font-size: 0.94rem;
+      color: var(--text-heading);
+      background-color: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(22, 119, 255, 0.12);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-privacy-note {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+
+    .contact-success-banner {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px 20px;
+      background: #ECFDF5;
+      border: 1px solid #A7F3D0;
+      border-radius: var(--radius-md);
+      margin-top: 20px;
+    }
+
+    .success-icon-badge {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #10B981;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.84rem;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    .success-text-col h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #065F46;
+      margin-bottom: 2px;
+    }
+
+    .success-text-col p {
+      font-size: 0.86rem;
+      color: #047857;
+      line-height: 1.45;
+    }
+
+    /* ==========================================================================
+       10. Footer
+       ========================================================================== */
+    .site-footer {
+      background: var(--bg-light);
+      border-top: 1px solid var(--border);
+      padding: 64px 0 32px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand-col {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .footer-brand-summary {
+      font-size: 0.92rem;
+      color: var(--text-body);
+      line-height: 1.6;
+      max-width: 320px;
+    }
+
+    .footer-loc {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-nav-col h4 {
+      font-size: 0.86rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--text-heading);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 18px;
+    }
+
+    .footer-links-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links-list a {
+      font-size: 0.9rem;
+      color: var(--text-body);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links-list a:hover {
+      color: var(--primary);
+    }
+
+    .footer-bottom-bar {
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-legal-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* ==========================================================================
+       11. Modals (Conversation Quote & Portfolio Case Study)
+       ========================================================================== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(13, 27, 42, 0.6);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 2000;
+    }
+
+    .modal-backdrop.is-open {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 580px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 36px;
+      position: relative;
+      box-shadow: 0 20px 40px rgba(13, 27, 42, 0.2);
+    }
+
+    .modal-box.modal-large {
+      max-width: 720px;
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      color: var(--text-body);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .modal-close-btn:hover {
+      background: #E2E8F0;
+      color: var(--text-heading);
+    }
+
+    .modal-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 20px;
+      padding-right: 32px;
+    }
+
+
+
+    /* ==========================================================================
+       12. Responsive Breakpoints
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section-padding {
+        padding: 64px 0;
+      }
+      .hero-section {
+        padding: 56px 0 64px;
+      }
+      .hero-trust-list {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .service-panel-inner {
+        padding: 0 12px 28px 12px;
+      }
+      .service-accordion-header {
+        padding: 22px 12px;
+      }
+      .service-header-left {
+        gap: 14px;
+      }
+      .service-num {
+        font-size: 1.05rem;
+        width: 30px;
+      }
+      .service-name {
+        font-size: 1.15rem;
+      }
+      .contact-card-wrapper {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .contact-form-grid {
+        grid-template-columns: 1fr;
+      }
+      .form-field.full-width {
+        grid-column: span 1;
+      }
+
+      /* Mobile Nav */
+      .mobile-toggle {
+        display: flex;
+      }
+      .nav-menu {
+        position: fixed;
+        top: 76px;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px;
+        gap: 20px;
+        box-shadow: 0 12px 24px rgba(13, 27, 42, 0.08);
+        display: none;
+      }
+      .nav-menu.is-open {
+        display: flex;
+      }
+      .nav-link {
+        font-size: 1.05rem;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .service-pills-wrap {
+        gap: 6px;
+      }
+      .service-pill {
+        font-size: 0.78rem;
+        padding: 5px 12px;
+      }
+      .service-panel-desc {
+        font-size: 0.96rem;
+      }
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-cta-group {
+        flex-direction: column;
+        width: 100%;
+      }
+      .hero-cta-group .btn {
+        width: 100%;
+      }
+      .contact-form-panel {
+        padding: 24px 20px;
+      }
+      .modal-box {
+        padding: 28px 20px;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    /* Accessibility: Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================================
+       Header & Navigation Bar
+       ======================================================================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-container">
+      <a href="#hero" class="brand-link" aria-label="Weboraa Technologies — Home">
+        <img src="assets/weboraa-logo.png" alt="Weboraa Technologies" class="brand-logo-img">
+      </a>
+
+      <!-- Primary Navigation -->
+      <nav aria-label="Primary Navigation">
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#about" class="nav-link">About Us</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Action CTA -->
+      <div class="nav-actions">
+        <a href="javascript:void(0);" class="btn btn-primary btn-sm" data-open-modal="conversation" data-service="Project Quote">
+          <span>Get a Project Quote</span>
+          <span class="btn-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ======================================================================
+         1. Hero Section (Clean Authority Hero Layout)
+         ====================================================================== -->
+    <section class="hero-section" id="hero">
+      <div class="container">
+        <div class="hero-content">
+          <span class="section-eyebrow">DIGITAL SOLUTIONS & ENGINEERING</span>
+          
+          <h1 class="hero-title">
+            Digital solutions built around your <span class="hero-title-accent">business.</span>
+          </h1>
+
+          <p class="hero-desc">
+            Websites, e-commerce platforms, business software, label printing and digital marketing — tailored to help your business operate better and grow online.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="javascript:void(0);" class="btn btn-primary btn-lg" data-open-modal="conversation" data-service="Project Discussion">
+              <span>Discuss Your Project</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </a>
+            <a href="#services" class="btn btn-secondary btn-lg">
+              <span>Explore Our Services</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+
+          <!-- Trust / Credibility Highlights -->
+          <div class="hero-trust-list">
+            <div class="hero-trust-item">
+              <svg class="trust-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Based in Coimbatore, Tamil Nadu — Serving growing businesses regionally & nationally</span>
+            </div>
+            <div class="hero-trust-item">
+              <svg class="trust-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Tailored architecture, clean maintainable code & zero unnecessary complexity</span>
+            </div>
+            <div class="hero-trust-item">
+              <svg class="trust-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Direct developer collaboration with agreed scope support</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         2. Services Section (Clean Expandable Accordion)
+         ====================================================================== -->
+    <section class="services-section section-padding" id="services">
+      <div class="container">
+        
+        <div class="section-header text-center">
+          <span class="section-eyebrow">OUR SERVICES</span>
+          <h2 class="section-title">Everything your business needs to build, manage and grow.</h2>
+          <p class="section-desc">
+            Explore our specialized capabilities below. Click any service to view exact deliverables, features, and direct project engagement.
+          </p>
+        </div>
+
+        <div class="services-accordion-wrap" id="servicesAccordion">
+          
+          <!-- 01 Website Development -->
+          <div class="service-accordion-item is-open" data-service-index="01">
+            <button type="button" class="service-accordion-header" aria-expanded="true" aria-controls="service-panel-01" id="service-header-01">
+              <div class="service-header-left">
+                <span class="service-num">01</span>
+                <h3 class="service-name">Website Development</h3>
+              </div>
+              <div class="service-header-right">
+                <span class="service-toggle-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
+              </div>
+            </button>
+            <div class="service-accordion-panel" id="service-panel-01" role="region" aria-labelledby="service-header-01">
+              <div class="service-panel-inner">
+                <p class="service-panel-desc">
+                  Professional, responsive websites and dynamic portals engineered to establish digital authority, clearly communicate brand value, and convert qualified visitors into long-term clients.
+                </p>
+                <div class="service-pills-wrap">
+                  <span class="service-pill"><span class="service-pill-dot"></span>Corporate & Business Websites</span>
+                  <span class="service-pill"><span class="service-pill-dot"></span>Dynamic Web Portals & CMS</span>
+                  <span class="service-pill"><span class="service-pill-dot"></span>High-Converting Landing Pages</span>
+                  <span class="service-pill"><span class="service-pill-dot"></span>Mobile-First Responsive Layouts</span>
+                  <span class="service-pill"><span class="service-pill-dot"></span>Core Web Vitals & Speed Optimization</span>
+                </div>
+                <div class="service-panel-footer">
+                  <button type="button" class="btn btn-primary btn-sm" data-open-modal="conversation" data-service="Website Development">
+                    <span>Discuss Website Project</span>
+                    <span class="btn-arrow" aria-hidden="true">→</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 02 E-commerce Development -->
+          <div class="service-accordion-item" data-service-index="02">
+            <button type="button" class="service-accordion-header" aria-expanded="false" aria-controls="service-panel-02" id="service-header-02">
+              <div class="service-header-left">
+                <span class="service-num">02</span>
+                <h3 class="service-name">E-commerce Development</h3>
+              </div>
+              <div class="service-header-right">
+                <span class="service-toggle-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
+              </div>
+            </button>
+            <div class="service-accordion-panel" id="service-panel-02" role="region" aria-labelledby="service-header-02">
+              <div class="service-panel-inner">
+                <p class="service-panel-desc">
+                  Robust online storefronts built with intuitive catalogue browsing, frictionless shopping carts, secure multi-currency payment gateways, and backend inventory tracking.
+                </p>
+                <div class="service-pills-wrap">
+                  <span class="service-pill"><span class="service-pill-dot"></span>Custom Online Stores</span>
+                  <span class="service-pill"><span class="service-pill-dot"></span>Product Catalogues & Smart Filters</span>
+                  <span class="service-pill"><span class="service-pill-dot"></span>Payment Gateways & UPI Integration</span>
+                  <span class="service-pill"><span class="service-pill-dot"></span>Shopping Cart & Checkout Flows</span>
+                  <span class="service-pill"><span class="service-pill-dot"></span>Order Fulfillment & Inventory Sync</span>
+                </div>
+                <div class="service-panel-footer">
+                  <button type="button" class="btn btn-primary btn-sm" data-open-modal="conversation" data-service="E-commerce Development">
+                    <span>Discuss E-commerce Project</span>
+                    <span class="btn-arrow" aria-hidden="true">→</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 03 ERP & Business Management Software -->
+          <div class="service-accordion-item" data-service-index="03">
+            <button type="button" class="service-accordion-header" aria-expanded="false" aria-controls="service-panel-03" id="service-header-03">
+              <div class="service-header-left">
+                <span class="service-num">03</span>
+                <h3 class="service-name">ERP & Business Management Software</h3>
+              </div>
+              <div class="service-header-right">
+                <span class="service-toggle-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
+              </div>
+            </button>
+            <div class="service-accordion-panel" id="service-panel-03" role="region" aria-labelledby="service-header-03">
+              <div class="service-panel-inner">
+                <p class="service-panel-desc">
+                  Practical enterprise software that structures daily business operations, eliminates manual administrative repetition, automates GST billing, and provides real-time operational visibility.
+                </p>
+                <div class="service-pills-wrap">
+                  <span class="service-pill"><span class="service-pill-dot"></span>Inventory & Warehouse Management</span>
+                  <span class="service-pill"><span class="service-pill-dot"></span>GST Invoicing & Automated Billing</span>
+                  <span class="service-pill"><span class="service-pill-dot"></span>Customer & Vendor Ledger</span>
+                  <span class="service-pill"><span class="service-pill-dot"></span>Purchase & Sales Lifecycle</span>
+                  <span class="service-pill"><span class="service-pill-dot"></span>Custom Operational Dashboards</span>
+                </div>
+                <div class="service-panel-footer">
+                  <button type="button" class="btn btn-primary btn-sm" data-open-modal="conversation" data-service="ERP and Business Management Software">
+                    <span>Discuss Business Software</span>
+                    <span class="btn-arrow" aria-hidden="true">→</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 04 Label & Sticker Printing -->
+          <div class="service-accordion-item" data-service-index="04">
+            <button type="button" class="service-accordion-header" aria-expanded="false" aria-controls="service-panel-04" id="service-header-04">
+              <div class="service-header-left">
+                <span class="service-num">04</span>
+                <h3 class="service-name">Label & Sticker Printing</h3>
+              </div>
+              <div class="service-header-right">
+                <span class="service-toggle-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
+              </div>
+            </button>
+            <div class="service-accordion-panel" id="service-panel-04" role="region" aria-labelledby="service-header-04">
+              <div class="service-panel-inner">
+                <p class="service-panel-desc">
+                  Commercial-grade product labels and custom precision stickers crafted to present your packaged products with sharp typography, durable materials, and consistent color reproduction.
+                </p>
+                <div class="service-pills-wrap">
+                  <span class="service-pill"><span class="service-pill-dot"></span>Product Labels & Roll Stickers</span>
+                  <span class="service-pill"><span class="service-pill-dot"></span>Barcode & QR Code Labels</span>
+                  <span class="service-pill"><span class="service-pill-dot"></span>Packaging & Dispatch Labels</span>
+                  <span class="service-pill"><span class="service-pill-dot"></span>Waterproof, Matte & Gloss Finishes</span>
+                  <span class="service-pill"><span class="service-pill-dot"></span>Custom Die-Cut Stickers</span>
+                </div>
+                <div class="service-panel-footer">
+                  <button type="button" class="btn btn-primary btn-sm" data-open-modal="conversation" data-service="Label and Sticker Printing">
+                    <span>Discuss Printing Solutions</span>
+                    <span class="btn-arrow" aria-hidden="true">→</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 05 UI/UX & Website Design -->
+          <div class="service-accordion-item" data-service-index="05">
+            <button type="button" class="service-accordion-header" aria-expanded="false" aria-controls="service-panel-05" id="service-header-05">
+              <div class="service-header-left">
+                <span class="service-num">05</span>
+                <h3 class="service-name">UI/UX & Website Design</h3>
+              </div>
+              <div class="service-header-right">
+                <span class="service-toggle-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
+              </div>
+            </button>
+            <div class="service-accordion-panel" id="service-panel-05" role="region" aria-labelledby="service-header-05">
+              <div class="service-panel-inner">
+                <p class="service-panel-desc">
+                  Thoughtful user-experience architecture and modern visual interfaces that make complex software intuitive to navigate and digital storefronts effortless for customers to complete transactions.
+                </p>
+                <div class="service-pills-wrap">
+                  <span class="service-pill"><span class="service-pill-dot"></span>Wireframes & User Journey Flows</span>
+                  <span class="service-pill"><span class="service-pill-dot"></span>Interactive Figma Prototypes</span>
+                  <span class="service-pill"><span class="service-pill-dot"></span>Responsive Interface Design</span>
+                  <span class="service-pill"><span class="service-pill-dot"></span>Design Systems & Typography Tokens</span>
+                  <span class="service-pill"><span class="service-pill-dot"></span>Conversion-Focused UI Audits</span>
+                </div>
+                <div class="service-panel-footer">
+                  <button type="button" class="btn btn-primary btn-sm" data-open-modal="conversation" data-service="UI/UX and Website Design">
+                    <span>Discuss UI/UX Design</span>
+                    <span class="btn-arrow" aria-hidden="true">→</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 06 Custom Software & Automation -->
+          <div class="service-accordion-item" data-service-index="06">
+            <button type="button" class="service-accordion-header" aria-expanded="false" aria-controls="service-panel-06" id="service-header-06">
+              <div class="service-header-left">
+                <span class="service-num">06</span>
+                <h3 class="service-name">Custom Software & Automation</h3>
+              </div>
+              <div class="service-header-right">
+                <span class="service-toggle-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
+              </div>
+            </button>
+            <div class="service-accordion-panel" id="service-panel-06" role="region" aria-labelledby="service-header-06">
+              <div class="service-panel-inner">
+                <p class="service-panel-desc">
+                  Bespoke web applications, workflow automation scripts, and custom API connections tailored to resolve operational bottlenecks that off-the-shelf software cannot address.
+                </p>
+                <div class="service-pills-wrap">
+                  <span class="service-pill"><span class="service-pill-dot"></span>Custom Web Applications</span>
+                  <span class="service-pill"><span class="service-pill-dot"></span>Workflow & Task Automation</span>
+                  <span class="service-pill"><span class="service-pill-dot"></span>REST API & Webhook Integrations</span>
+                  <span class="service-pill"><span class="service-pill-dot"></span>Relational Database Architecture</span>
+                  <span class="service-pill"><span class="service-pill-dot"></span>Internal Tools & Admin Portals</span>
+                </div>
+                <div class="service-panel-footer">
+                  <button type="button" class="btn btn-primary btn-sm" data-open-modal="conversation" data-service="Custom Software and Automation">
+                    <span>Discuss Custom Software</span>
+                    <span class="btn-arrow" aria-hidden="true">→</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 07 Social Media & Digital Marketing -->
+          <div class="service-accordion-item" data-service-index="07">
+            <button type="button" class="service-accordion-header" aria-expanded="false" aria-controls="service-panel-07" id="service-header-07">
+              <div class="service-header-left">
+                <span class="service-num">07</span>
+                <h3 class="service-name">Social Media & Digital Marketing</h3>
+              </div>
+              <div class="service-header-right">
+                <span class="service-toggle-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
+              </div>
+            </button>
+            <div class="service-accordion-panel" id="service-panel-07" role="region" aria-labelledby="service-header-07">
+              <div class="service-panel-inner">
+                <p class="service-panel-desc">
+                  Focused digital marketing execution combining organic search presence, Meta social campaigns, and WhatsApp direct messaging to attract, engage, and convert qualified business leads.
+                </p>
+                <div class="service-pills-wrap">
+                  <span class="service-pill"><span class="service-pill-dot"></span>Instagram Brand Growth & Creatives</span>
+                  <span class="service-pill"><span class="service-pill-dot"></span>WhatsApp Marketing & Catalogues</span>
+                  <span class="service-pill"><span class="service-pill-dot"></span>Google Search & On-Page SEO</span>
+                  <span class="service-pill"><span class="service-pill-dot"></span>Targeted Ad Campaign Execution</span>
+                  <span class="service-pill"><span class="service-pill-dot"></span>Direct Lead Generation Funnels</span>
+                </div>
+                <div class="service-panel-footer">
+                  <button type="button" class="btn btn-primary btn-sm" data-open-modal="conversation" data-service="Social Media and Digital Marketing">
+                    <span>Discuss Marketing Strategy</span>
+                    <span class="btn-arrow" aria-hidden="true">→</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         3. Why Choose Weboraa Section
+         ====================================================================== -->
+    <section class="why-section section-padding" id="why-us">
+      <div class="container">
+        
+        <div class="section-header text-center">
+          <span class="section-eyebrow">OUR ADVANTAGE</span>
+          <h2 class="section-title">Technology that works for your business.</h2>
+          <p class="section-desc">
+            We prioritize practical utility, clean engineering, and honest communication over unnecessary complexity.
+          </p>
+        </div>
+
+        <div class="why-grid">
+          <!-- Benefit 1 -->
+          <div class="why-card">
+            <span class="why-num-tag">01 / FOCUS</span>
+            <h3 class="why-card-title">Business-focused solutions</h3>
+            <p class="why-card-desc">
+              We align technical architecture directly with your operational goals, ensuring every feature delivers measurable value.
+            </p>
+          </div>
+
+          <!-- Benefit 2 -->
+          <div class="why-card">
+            <span class="why-num-tag">02 / FIT</span>
+            <h3 class="why-card-title">Tailored development</h3>
+            <p class="why-card-desc">
+              Custom software and websites built specifically for your workflows, avoiding rigid one-size-fits-all platforms.
+            </p>
+          </div>
+
+          <!-- Benefit 3 -->
+          <div class="why-card">
+            <span class="why-num-tag">03 / UNITY</span>
+            <h3 class="why-card-title">Connected digital services</h3>
+            <p class="why-card-desc">
+              From engineering and UI/UX design to label printing and digital marketing, all handled cohesively under one roof.
+            </p>
+          </div>
+
+          <!-- Benefit 4 -->
+          <div class="why-card">
+            <span class="why-num-tag">04 / SUPPORT</span>
+            <h3 class="why-card-title">Clear communication & support</h3>
+            <p class="why-card-desc">
+              Transparent scoping, regular milestone updates, and reliable post-launch maintenance within your agreed terms.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         4. Development Process Section
+         ====================================================================== -->
+    <section class="process-section section-padding" id="process">
+      <div class="container">
+        
+        <div class="section-header text-center">
+          <span class="section-eyebrow">DELIVERY FRAMEWORK</span>
+          <h2 class="section-title">A structured path from idea to deployment.</h2>
+          <p class="section-desc">
+            A transparent, four-stage delivery process keeping your project on schedule and aligned with expectations.
+          </p>
+        </div>
+
+        <div class="process-grid">
+          <!-- Step 1 -->
+          <div class="process-card">
+            <div class="step-number-pill">1</div>
+            <h3 class="process-step-title">Discover</h3>
+            <p class="process-step-desc">
+              We evaluate your business requirements, operational challenges, target audience, and functional scope.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="process-card">
+            <div class="step-number-pill">2</div>
+            <h3 class="process-step-title">Plan and Design</h3>
+            <p class="process-step-desc">
+              We produce wireframes, interface designs, database schemas, and establish agreed milestone timelines.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="process-card">
+            <div class="step-number-pill">3</div>
+            <h3 class="process-step-title">Develop and Test</h3>
+            <p class="process-step-desc">
+              We write clean, maintainable code, integrate third-party APIs, and perform thorough cross-device QA testing.
+            </p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="process-card">
+            <div class="step-number-pill">4</div>
+            <h3 class="process-step-title">Launch and Support</h3>
+            <p class="process-step-desc">
+              We deploy to your production environment, configure domains and SSL, and deliver agreed ongoing maintenance.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+
+    <!-- ======================================================================
+         6. About Weboraa Section
+         ====================================================================== -->
+    <section class="about-section section-padding" id="about">
+      <div class="container">
+        <div class="about-grid">
+          
+          <!-- Narrative Left -->
+          <div class="about-narrative">
+            <span class="section-eyebrow">ABOUT WEBORAA</span>
+            <h2 class="section-title">Practical digital engineering based in Coimbatore.</h2>
+            <p>
+              <strong>Weboraa Technologies</strong> is an independent digital solutions company based in Coimbatore, Tamil Nadu. We partner with growing businesses, startups, and entrepreneurs to design, build, and deploy reliable software, modern websites, and digital marketing systems.
+            </p>
+            <p>
+              Rather than overselling complex technology, we focus on understanding your operational reality. We engineer maintainable solutions, communicate with complete clarity, and provide dedicated post-launch support based strictly on your agreed project scope.
+            </p>
+            <div style="margin-top: 28px;">
+              <a href="javascript:void(0);" class="btn btn-primary" data-open-modal="conversation" data-service="About Weboraa Partnership">
+                <span>Connect With Our Team</span>
+                <span class="btn-arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Pillars Right -->
+          <div class="about-pillars-box" aria-label="Weboraa engineering standards">
+            <div class="pillar-item">
+              <span class="pillar-num">01</span>
+              <div class="pillar-content">
+                <h4>Engineered for Maintainability</h4>
+                <p>Clean, modular codebases designed to scale smoothly without compounding technical debt.</p>
+              </div>
+            </div>
+
+            <div class="pillar-item">
+              <span class="pillar-num">02</span>
+              <div class="pillar-content">
+                <h4>Direct Collaboration & Transparency</h4>
+                <p>Speak directly with your developers with weekly progress milestones and transparent timeframes.</p>
+              </div>
+            </div>
+
+            <div class="pillar-item">
+              <span class="pillar-num">03</span>
+              <div class="pillar-content">
+                <h4>Agreed Scope & Dedicated Support</h4>
+                <p>Dependable post-deployment maintenance and updates provided strictly within agreed service terms.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         7. Call-to-Action Section (Dark Navy B2B Theme)
+         ====================================================================== -->
+    <section class="final-cta-section">
+      <div class="container">
+        <div class="final-cta-box">
+          <span class="final-cta-eyebrow">READY TO GROW?</span>
+          <h2 class="final-cta-title">Have a project in mind? Let's make it happen.</h2>
+          <p class="final-cta-desc">
+            Tell us what you want to build, improve or promote. We'll discuss your requirements and help identify the right solution for your business.
+          </p>
+          <div class="final-cta-buttons">
+            <a href="javascript:void(0);" class="btn btn-primary btn-lg" data-open-modal="conversation" data-service="Project Quote">
+              <span>Get a Project Quote</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </a>
+            <a href="#services" class="btn btn-secondary btn-lg" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.25); color: #FFFFFF;">
+              <span>Explore Our Services</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+          <div>
+            <a href="https://wa.me/918929099993?text=Hi%20Weboraa%20Technologies%2C%20I%20would%20like%20to%20discuss%20a%20project%20quote." target="_blank" rel="noopener noreferrer" class="final-whatsapp-badge">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+              <span>Instant Chat on WhatsApp: +91 89290 99993</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         8. Contact Section (Split-Layout Studio & B2B Form)
+         ====================================================================== -->
+    <section class="contact-section section-padding" id="contact">
+      <div class="container">
+        <div class="contact-card-wrapper">
+          
+          <!-- Left Column: Verified Contact Details -->
+          <div class="contact-hub-col">
+            <div>
+              <div class="contact-status-pill">
+                <span class="status-live-dot"></span>
+                <span>Available for New Projects</span>
+              </div>
+              <h2 class="contact-main-heading">Let’s build something exceptional.</h2>
+              <p class="contact-lead-text">
+                Have a product to launch, a web platform to engineer, or technical questions? Speak directly with our team.
+              </p>
+            </div>
+
+            <div class="contact-info-list">
+              <!-- Direct Email -->
+              <div class="contact-info-item">
+                <div class="info-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                </div>
+                <div>
+                  <span class="info-label">Direct Email</span>
+                  <div>
+                    <a href="mailto:weboraatechnologies@gmail.com" class="info-link">weboraatechnologies@gmail.com</a>
+                    <button type="button" class="info-copy-btn" id="copyEmailBtn" aria-label="Copy email address" title="Copy email address">
+                      <span class="copy-text">Copy</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Direct Phone / WhatsApp -->
+              <div class="contact-info-item">
+                <div class="info-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </div>
+                <div>
+                  <span class="info-label">Direct Phone / WhatsApp</span>
+                  <div>
+                    <a href="tel:+918929099993" class="info-link">+91 89290 99993</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Location -->
+              <div class="contact-info-item">
+                <div class="info-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </div>
+                <div>
+                  <span class="info-label">Development Hub</span>
+                  <span class="info-link" style="color: var(--text-body);">Coimbatore, Tamil Nadu, India</span>
+                </div>
+              </div>
+
+              <!-- Response Time -->
+              <div class="contact-info-item">
+                <div class="info-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
+                <div>
+                  <span class="info-label">Response Time</span>
+                  <span class="info-link" style="color: var(--text-body); font-weight: normal;">Typical response &lt; 4 business hours • Mon – Sat</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Conversion-Focused B2B Inquiry Form -->
+          <div class="contact-form-panel">
+            <div class="form-panel-header">
+              <h3 class="form-panel-title">Start a Conversation</h3>
+              <p class="form-panel-desc">Fill out your project requirements below and we'll reply promptly.</p>
+            </div>
+
+            <form id="projectInquiryForm" novalidate>
+              <!-- Anti-Spam Honeypot (hidden from real users) -->
+              <input type="text" id="contactWebsiteHoneypot" name="website_url" style="display:none !important;" tabindex="-1" autocomplete="off">
+
+              <div class="contact-form-grid">
+                <!-- Full Name -->
+                <div class="form-field">
+                  <label for="contactName" class="field-label">Full Name <span class="req">*</span></label>
+                  <input type="text" id="contactName" name="name" class="form-control" placeholder="Your name" required>
+                </div>
+
+                <!-- Email Address -->
+                <div class="form-field">
+                  <label for="contactEmail" class="field-label">Email Address <span class="req">*</span></label>
+                  <input type="email" id="contactEmail" name="email" class="form-control" placeholder="you@company.com" required>
+                </div>
+
+                <!-- Phone / WhatsApp -->
+                <div class="form-field">
+                  <label for="contactPhone" class="field-label">Phone or WhatsApp</label>
+                  <input type="tel" id="contactPhone" name="phone" class="form-control" placeholder="+91 ...">
+                </div>
+
+                <!-- Service Required Dropdown -->
+                <div class="form-field">
+                  <label for="contactService" class="field-label">Service Required</label>
+                  <select id="contactService" name="service" class="form-control">
+                    <option value="Website Development">Website Development</option>
+                    <option value="E-commerce Development">E-commerce Development</option>
+                    <option value="ERP & Business Software">ERP & Business Management Software</option>
+                    <option value="Label & Sticker Printing">Label & Sticker Printing</option>
+                    <option value="UI/UX & Website Design">UI/UX & Website Design</option>
+                    <option value="Custom Software & Automation">Custom Software & Automation</option>
+                    <option value="Social Media & Digital Marketing">Social Media & Digital Marketing</option>
+                    <option value="General Consultation">General Consultation</option>
+                  </select>
+                </div>
+
+                <!-- Project Budget Dropdown -->
+                <div class="form-field">
+                  <label for="contactBudget" class="field-label">Project Budget (Optional)</label>
+                  <select id="contactBudget" name="budget" class="form-control">
+                    <option value="To be discussed">To be discussed</option>
+                    <option value="Under ₹25,000">Under ₹25,000</option>
+                    <option value="₹25,000 - ₹50,000">₹25,000 – ₹50,000</option>
+                    <option value="₹50,000 - ₹1,00,000">₹50,000 – ₹1,00,000</option>
+                    <option value="₹1,00,000+">₹1,00,000+</option>
+                  </select>
+                </div>
+
+                <!-- Project Timeline Dropdown -->
+                <div class="form-field">
+                  <label for="contactTimeline" class="field-label">Project Timeline (Optional)</label>
+                  <select id="contactTimeline" name="timeline" class="form-control">
+                    <option value="Immediate (< 2 weeks)">Immediate (&lt; 2 weeks)</option>
+                    <option value="1 - 2 months">1 to 2 months</option>
+                    <option value="2 - 3 months">2 to 3 months</option>
+                    <option value="Flexible / Exploring">Flexible / Exploring</option>
+                  </select>
+                </div>
+
+                <!-- Project Description -->
+                <div class="form-field full-width">
+                  <label for="contactMessage" class="field-label">Project Description <span class="req">*</span></label>
+                  <textarea id="contactMessage" name="message" class="form-control" rows="4" placeholder="Briefly describe what you are looking to build, improve or promote..." required></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-field full-width">
+                  <button type="submit" class="btn btn-primary btn-block btn-lg">
+                    <span>Send Project Inquiry</span>
+                    <span class="btn-arrow" aria-hidden="true">→</span>
+                  </button>
+                  <p class="form-privacy-note">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <span>Strictly confidential. No sales pitches or spam.</span>
+                  </p>
+                </div>
+              </div>
+            </form>
+
+            <!-- Success Alert Banner -->
+            <div id="formSuccessAlert" class="contact-success-banner" role="status" aria-live="polite" style="display: none;">
+              <div class="success-icon-badge">✓</div>
+              <div class="success-text-col">
+                <h4>Inquiry Sent Successfully</h4>
+                <p>Thank you for reaching out to Weboraa Technologies. A technical lead will review your requirements and get in touch shortly.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       Footer
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <!-- Brand Summary -->
+        <div class="footer-brand-col">
+          <a href="#hero" class="brand-link" aria-label="Weboraa Technologies Home">
+            <img src="assets/weboraa-logo.png" alt="Weboraa Technologies" class="brand-logo-img">
+          </a>
+          <p class="footer-brand-summary">
+            Practical digital solutions — from responsive websites and custom software to label printing and digital marketing, built for growing businesses.
+          </p>
+          <div class="footer-loc">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Coimbatore, Tamil Nadu, India</span>
+          </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="footer-nav-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links-list">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#why-us">Why Weboraa</a></li>
+            <li><a href="#process">Our Process</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Services Links -->
+        <div class="footer-nav-col">
+          <h4>Our Services</h4>
+          <ul class="footer-links-list">
+            <li><a href="#services">Website Development</a></li>
+            <li><a href="#services">E-commerce Stores</a></li>
+            <li><a href="#services">ERP Business Software</a></li>
+            <li><a href="#services">Label & Sticker Printing</a></li>
+            <li><a href="#services">UI/UX & Web Design</a></li>
+            <li><a href="#services">Custom Software & APIs</a></li>
+            <li><a href="#services">Digital & WhatsApp Marketing</a></li>
+          </ul>
+        </div>
+
+        <!-- Connect Column -->
+        <div class="footer-nav-col">
+          <h4>Connect</h4>
+          <ul class="footer-links-list">
+            <li><a href="https://wa.me/918929099993?text=Hi%20Weboraa%20Technologies" target="_blank" rel="noopener noreferrer">WhatsApp Direct</a></li>
+            <li><a href="mailto:weboraatechnologies@gmail.com">weboraatechnologies@gmail.com</a></li>
+            <li><a href="tel:+918929099993">+91 89290 99993</a></li>
+            <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div>
+          © <span id="currentYear">2026</span> Weboraa Technologies. All rights reserved.
+        </div>
+        <div>
+          Digital Solutions. Designed for Growth. • Coimbatore, Tamil Nadu, India
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       Conversation / Project Quote Modal Dialog
+       ======================================================================== -->
+  <div class="modal-backdrop" id="conversationModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+      <button type="button" class="modal-close-btn" id="closeConversationModal" aria-label="Close quote modal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+
+      <span class="modal-eyebrow" id="modalServiceTag">Fast Turnaround • 24h Response</span>
+      <h3 class="modal-title" id="modalTitle">Get a Project Quote</h3>
+
+      <form id="modalInquiryForm" novalidate>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div class="form-field">
+            <label for="modalName" class="field-label">Full Name <span class="req">*</span></label>
+            <input type="text" id="modalName" name="name" class="form-control" placeholder="Your name" required>
+          </div>
+
+          <div class="form-field">
+            <label for="modalEmail" class="field-label">Email Address <span class="req">*</span></label>
+            <input type="email" id="modalEmail" name="email" class="form-control" placeholder="you@company.com" required>
+          </div>
+
+          <div class="form-field">
+            <label for="modalPhone" class="field-label">Phone or WhatsApp</label>
+            <input type="tel" id="modalPhone" name="phone" class="form-control" placeholder="+91 ...">
+          </div>
+
+          <div class="form-field">
+            <label for="modalService" class="field-label">Service Scope</label>
+            <select id="modalService" name="service" class="form-control">
+              <option value="Website Development">Website Development</option>
+              <option value="E-commerce Development">E-commerce Development</option>
+              <option value="ERP & Business Software">ERP & Business Management Software</option>
+              <option value="Label & Sticker Printing">Label & Sticker Printing</option>
+              <option value="UI/UX & Website Design">UI/UX & Website Design</option>
+              <option value="Custom Software & Automation">Custom Software & Automation</option>
+              <option value="Social Media & Digital Marketing">Social Media & Digital Marketing</option>
+              <option value="General Consultation">General Consultation</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="modalMessage" class="field-label">Project Requirements <span class="req">*</span></label>
+            <textarea id="modalMessage" name="message" class="form-control" rows="3" placeholder="Tell us what you are looking to build or achieve..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top: 8px;">
+            <span>Submit Quote Request</span>
+            <span class="btn-arrow" aria-hidden="true">→</span>
+          </button>
+        </div>
+      </form>
+
+      <div id="modalSuccessAlert" class="contact-success-banner" role="status" aria-live="polite" style="display: none; margin-top: 16px;">
+        <div class="success-icon-badge">✓</div>
+        <div class="success-text-col">
+          <h4>Request Received</h4>
+          <p>Thank you! Our technical lead will review your scope and get in touch within 24 hours.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="script.js?v=2.1"></script>
+</body>
+</html>
