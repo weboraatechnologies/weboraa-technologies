@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Modal Form Submission
   if (modalInquiryForm) {
-    modalInquiryForm.addEventListener('submit', (e) => {
+    modalInquiryForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const name = document.getElementById('modalName');
@@ -256,7 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      if (!email || !email.value.trim() || !email.value.includes('@')) {
+      if (!email || !email.value.trim() || !email.value.includes('@') || !email.value.includes('.')) {
         alert('Please provide a valid email address.');
         if (email) email.focus({ preventScroll: true });
         return;
@@ -269,10 +269,36 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const origText = submitBtn.innerHTML;
-      submitBtn.innerHTML = '<span>Sending inquiry...</span>';
+      submitBtn.innerHTML = '<span>Sending quote request...</span>';
       submitBtn.disabled = true;
 
-      setTimeout(() => {
+      try {
+        const formData = new FormData(modalInquiryForm);
+        // Anti-spam check
+        if (formData.get('_honey')) {
+          submitBtn.innerHTML = origText;
+          submitBtn.disabled = false;
+          modalInquiryForm.reset();
+          closeConversationModal();
+          return;
+        }
+
+        const endpoint = modalInquiryForm.getAttribute('action') || 'https://formsubmit.co/ajax/weboraatechnologies@gmail.com';
+        const ajaxEndpoint = endpoint.includes('/ajax/') ? endpoint : endpoint.replace('formsubmit.co/', 'formsubmit.co/ajax/');
+
+        const response = await fetch(ajaxEndpoint, {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json'
+          },
+          body: formData
+        });
+
+        const result = await response.json().catch(() => ({}));
+        console.log('Modal quote request result:', result);
+      } catch (err) {
+        console.warn('Form submission notice:', err);
+      } finally {
         submitBtn.innerHTML = origText;
         submitBtn.disabled = false;
         modalInquiryForm.reset();
@@ -286,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
           closeConversationModal();
         }
-      }, 900);
+      }
     });
   }
 
@@ -390,7 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const formSuccessAlert = document.getElementById('formSuccessAlert');
 
   if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       // Check anti-spam honeypot
@@ -427,8 +453,32 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.innerHTML = '<span>Sending inquiry...</span>';
       submitBtn.disabled = true;
 
-      // Simulate reliable client delivery state
-      setTimeout(() => {
+      try {
+        const formData = new FormData(contactForm);
+        // Anti-spam check
+        if (formData.get('_honey') || (honeypot && honeypot.value.trim() !== '')) {
+          submitBtn.innerHTML = originalBtnHTML;
+          submitBtn.disabled = false;
+          contactForm.reset();
+          return;
+        }
+
+        const endpoint = contactForm.getAttribute('action') || 'https://formsubmit.co/ajax/weboraatechnologies@gmail.com';
+        const ajaxEndpoint = endpoint.includes('/ajax/') ? endpoint : endpoint.replace('formsubmit.co/', 'formsubmit.co/ajax/');
+
+        const response = await fetch(ajaxEndpoint, {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json'
+          },
+          body: formData
+        });
+
+        const result = await response.json().catch(() => ({}));
+        console.log('Project inquiry result:', result);
+      } catch (err) {
+        console.warn('Form submission notice:', err);
+      } finally {
         submitBtn.innerHTML = originalBtnHTML;
         submitBtn.disabled = false;
 
@@ -438,7 +488,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         contactForm.reset();
-      }, 950);
+      }
     });
   }
 

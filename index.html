@@ -2257,9 +2257,15 @@
               <p class="form-panel-desc">Fill out your project requirements below and we'll reply promptly.</p>
             </div>
 
-            <form id="projectInquiryForm" novalidate>
+            <form id="projectInquiryForm" action="https://formsubmit.co/weboraatechnologies@gmail.com" method="POST" novalidate>
               <!-- Anti-Spam Honeypot (hidden from real users) -->
               <input type="text" id="contactWebsiteHoneypot" name="website_url" style="display:none !important;" tabindex="-1" autocomplete="off">
+              <input type="text" name="_honey" style="display:none !important;" tabindex="-1" autocomplete="off">
+
+              <!-- FormSubmit Configuration -->
+              <input type="hidden" name="_subject" value="New Project Inquiry — Weboraa Technologies">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="false">
 
               <div class="contact-form-grid">
                 <!-- Full Name -->
@@ -2437,7 +2443,15 @@
       <span class="modal-eyebrow" id="modalServiceTag">Fast Turnaround • 24h Response</span>
       <h3 class="modal-title" id="modalTitle">Get a Project Quote</h3>
 
-      <form id="modalInquiryForm" novalidate>
+      <form id="modalInquiryForm" action="https://formsubmit.co/weboraatechnologies@gmail.com" method="POST" novalidate>
+        <!-- Anti-Spam Honeypot (hidden from real users) -->
+        <input type="text" name="_honey" style="display:none !important;" tabindex="-1" autocomplete="off">
+
+        <!-- FormSubmit Configuration -->
+        <input type="hidden" name="_subject" value="New Project Quote Request — Weboraa Technologies">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+
         <div style="display: flex; flex-direction: column; gap: 14px;">
           <div class="form-field">
             <label for="modalName" class="field-label">Full Name <span class="req">*</span></label>
@@ -2491,6 +2505,6 @@
   </div>
 
   <!-- Scripts -->
-  <script src="script.js?v=2.2"></script>
+  <script src="script.js?v=2.3"></script>
 </body>
 </html>
