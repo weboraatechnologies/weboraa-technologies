@@ -369,30 +369,63 @@
        SECTION 1: HERO
        ========================================================================== */
     .hero-section {
-      padding: var(--space-12) 0 var(--space-10);
+      padding: clamp(32px, 5vw, 48px) 0 var(--space-8);
       background-color: var(--bg-surface);
       border-bottom: 1px solid var(--border);
     }
 
-    .hero-inner {
-      max-width: 820px;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.08fr;
+      align-items: center;
+      gap: clamp(24px, 4vw, 48px);
+    }
+
+    .hero-text-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #64748B;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .hero-eyebrow-bar {
+      width: 3px;
+      height: 16px;
+      background-color: var(--primary);
+      border-radius: 2px;
+      flex-shrink: 0;
     }
 
     .hero-headline {
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
-      font-weight: 750;
-      color: var(--text-heading);
-      line-height: 1.12;
-      letter-spacing: -0.03em;
+      font-size: clamp(2.5rem, 4.4vw, 3.8rem);
+      font-weight: 800;
+      color: #0F172A;
+      line-height: 1.1;
+      letter-spacing: -0.035em;
       margin-bottom: var(--space-3);
     }
 
+    .hero-headline-accent {
+      color: var(--primary);
+    }
+
     .hero-supporting-text {
-      font-size: 1.25rem;
+      font-size: clamp(1.05rem, 1.5vw, 1.22rem);
       color: var(--text-body);
       line-height: 1.55;
       margin-bottom: var(--space-5);
-      max-width: 680px;
+      max-width: 520px;
     }
 
     .hero-cta-group {
@@ -403,14 +436,14 @@
     }
 
     .hero-location-line {
-      margin-top: var(--space-6);
+      margin-top: var(--space-5);
       padding-top: var(--space-3);
       border-top: 1px solid var(--border-subtle);
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .hero-location-dot {
@@ -419,6 +452,306 @@
       border-radius: 50%;
       background-color: var(--primary);
       flex-shrink: 0;
+    }
+
+    /* 3D Moving Animation Stage */
+    .hero-stage-col {
+      width: 100%;
+    }
+
+    .hero-3d-stage {
+      position: relative;
+      width: 100%;
+      height: 350px;
+      background: radial-gradient(circle at 65% 45%, #FFFFFF 0%, #F8FAFC 70%, #F1F5F9 100%);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      overflow: hidden;
+      box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.05);
+      user-select: none;
+    }
+
+    .stage-pin {
+      position: absolute;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      pointer-events: none;
+    }
+
+    .stage-pin-origin {
+      bottom: 36px;
+      left: 32px;
+    }
+
+    .stage-pin-dest {
+      top: 24px;
+      right: 76px;
+    }
+
+    .pin-badge {
+      font-size: 0.70rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: #0F172A;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(203, 213, 225, 0.7);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+      white-space: nowrap;
+    }
+
+    .pin-stem {
+      width: 1.5px;
+      height: 28px;
+      background: var(--primary);
+      position: relative;
+      margin-top: 2px;
+    }
+
+    .pin-dot {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 50%);
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 8px rgba(38, 120, 245, 0.7);
+    }
+
+    .cube-art-backdrop {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .cube-art-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      opacity: 0.92;
+    }
+
+    .cube-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100% !important;
+      height: 100% !important;
+      z-index: 5;
+      cursor: grab;
+    }
+
+    /* Dynamic CSS Moving Cubes Layer for Continuous Fluid Motion */
+    .animated-cubes-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 6;
+      overflow: hidden;
+    }
+
+    .moving-cube {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border-radius: 3px;
+      box-shadow: 0 6px 14px rgba(37, 99, 235, 0.25), 0 2px 4px rgba(0, 0, 0, 0.08);
+      animation: travelCurve 12s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+      opacity: 0;
+      transform-style: preserve-3d;
+    }
+
+    .cube-step-1 {
+      background: #2563EB;
+      animation-delay: 0s;
+    }
+
+    .cube-step-2 {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      animation-delay: 3s;
+    }
+
+    .cube-step-3 {
+      background: #1D4ED8;
+      animation-delay: 6s;
+    }
+
+    .cube-step-4 {
+      background: #F8FAFC;
+      border: 1px solid #CBD5E1;
+      animation-delay: 9s;
+    }
+
+    @keyframes travelCurve {
+      0% {
+        left: 12%;
+        top: 76%;
+        opacity: 0;
+        transform: scale(0.4) rotateX(10deg) rotateY(20deg);
+      }
+      8% {
+        opacity: 0.95;
+        transform: scale(0.9) rotateX(25deg) rotateY(40deg);
+      }
+      30% {
+        left: 32%;
+        top: 66%;
+        transform: scale(1) rotateX(45deg) rotateY(70deg) rotateZ(15deg);
+      }
+      55% {
+        left: 52%;
+        top: 48%;
+        transform: scale(1.05) rotateX(65deg) rotateY(110deg) rotateZ(35deg);
+      }
+      80% {
+        left: 70%;
+        top: 36%;
+        transform: scale(1) rotateX(85deg) rotateY(150deg) rotateZ(50deg);
+        opacity: 0.95;
+      }
+      92% {
+        left: 80%;
+        top: 40%;
+        transform: scale(0.85) rotateX(105deg) rotateY(180deg);
+        opacity: 0.8;
+      }
+      100% {
+        left: 83%;
+        top: 42%;
+        opacity: 0;
+        transform: scale(0.5) rotateX(120deg) rotateY(200deg);
+      }
+    }
+
+    /* 5-Step Process Strip */
+    .hero-process-strip {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      margin-top: 36px;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .process-strip-card {
+      background: #FFFFFF;
+      border: none;
+      border-right: 1px solid var(--border);
+      padding: 16px 14px 12px;
+      text-align: left;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      outline: none;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .process-strip-card:last-child {
+      border-right: none;
+    }
+
+    .strip-card-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .strip-step-badge {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #EFF6FF;
+      color: var(--primary);
+      font-size: 0.74rem;
+      font-weight: 750;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.25s ease;
+    }
+
+    .strip-step-title {
+      font-size: 0.84rem;
+      font-weight: 650;
+      color: #1E293B;
+      line-height: 1.25;
+      transition: color 0.2s ease;
+    }
+
+    .strip-card-visual {
+      width: 100%;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-top: auto;
+    }
+
+    .strip-card-visual img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .strip-card-progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: #F1F5F9;
+      overflow: hidden;
+    }
+
+    .strip-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: var(--primary);
+    }
+
+    .process-strip-card:hover {
+      background: #FAFCFF;
+    }
+
+    .process-strip-card:hover .strip-card-visual img {
+      transform: translateY(-2px) scale(1.04);
+    }
+
+    .process-strip-card.is-active {
+      background: #F8FAFC;
+    }
+
+    .process-strip-card.is-active .strip-step-badge {
+      background: var(--primary);
+      color: #FFFFFF;
+      box-shadow: 0 0 10px rgba(38, 120, 245, 0.4);
+    }
+
+    .process-strip-card.is-active .strip-step-title {
+      color: var(--primary);
+      font-weight: 750;
     }
 
     /* ==========================================================================
@@ -1025,6 +1358,15 @@
        RESPONSIVE BREAKPOINTS (360px, 390px, 768px, 1024px, 1440px)
        ========================================================================== */
     @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .hero-3d-stage {
+        height: 320px;
+      }
+
       .service-row-link {
         grid-template-columns: 200px 1fr 120px;
         gap: 16px;
@@ -1050,6 +1392,33 @@
     }
 
     @media (max-width: 768px) {
+      .hero-3d-stage {
+        height: 280px;
+      }
+
+      .stage-pin-origin {
+        bottom: 24px;
+        left: 16px;
+      }
+
+      .stage-pin-dest {
+        top: 16px;
+        right: 24px;
+      }
+
+      .hero-process-strip {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 4px;
+      }
+
+      .process-strip-card {
+        flex: 0 0 155px;
+        scroll-snap-align: start;
+      }
+
       .section-padding {
         padding: var(--space-8) 0;
       }
@@ -1195,30 +1564,148 @@
          SECTION 1 — HERO
          ====================================================================== -->
     <section class="hero-section" id="hero" aria-labelledby="heroHeadline">
-      <div class="container hero-inner">
+      <div class="container">
         
-        <h1 class="hero-headline" id="heroHeadline">
-          Your business. Built better.
-        </h1>
+        <!-- 2-Column Hero: Narrative & Interactive 3D Cube Stage -->
+        <div class="hero-grid">
+          
+          <!-- Left: Narrative & CTAs -->
+          <div class="hero-text-col">
+            <div class="hero-eyebrow">
+              <span class="hero-eyebrow-bar" aria-hidden="true"></span>
+              <span>IDEAS TO SOLUTIONS</span>
+            </div>
 
-        <p class="hero-supporting-text">
-          Websites, software and digital solutions for growing businesses.
-        </p>
+            <h1 class="hero-headline" id="heroHeadline">
+              Your business.<br>
+              <span class="hero-headline-accent">Built better.</span>
+            </h1>
 
-        <div class="hero-cta-group">
-          <button type="button" class="btn btn-primary btn-lg" data-open-modal="conversation" data-service="Project Inception">
-            <span>Start a Project</span>
-            <span class="btn-arrow" aria-hidden="true">→</span>
-          </button>
-          <a href="#services" class="btn btn-secondary btn-lg">
-            <span>Explore Services</span>
-            <span class="btn-arrow" aria-hidden="true">→</span>
-          </a>
+            <p class="hero-supporting-text">
+              Websites, software and digital solutions for growing businesses.
+            </p>
+
+            <div class="hero-cta-group">
+              <button type="button" class="btn btn-primary btn-lg" data-open-modal="conversation" data-service="Project Inception">
+                <span>Start a Project</span>
+                <span class="btn-arrow" aria-hidden="true">→</span>
+              </button>
+              <a href="#services" class="btn btn-secondary btn-lg">
+                <span>Explore Services</span>
+                <span class="btn-arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+
+            <div class="hero-location-line">
+              <span class="hero-location-dot" aria-hidden="true"></span>
+              <span>Weboraa Technologies • Independent Digital Solutions • Coimbatore, Tamil Nadu</span>
+            </div>
+          </div>
+
+          <!-- Right: Interactive 3D Cube Transformation Stage -->
+          <div class="hero-stage-col">
+            <div class="hero-3d-stage" id="hero3dStage" aria-label="3D moving animation: your idea to digital solution">
+              
+              <!-- Pin: YOUR IDEA -->
+              <div class="stage-pin stage-pin-origin" id="pinOrigin" aria-hidden="true">
+                <span class="pin-badge">YOUR IDEA</span>
+                <div class="pin-stem">
+                  <span class="pin-dot"></span>
+                </div>
+              </div>
+
+              <!-- Pin: YOUR DIGITAL SOLUTION -->
+              <div class="stage-pin stage-pin-dest" id="pinDest" aria-hidden="true">
+                <span class="pin-badge">YOUR DIGITAL SOLUTION</span>
+                <div class="pin-stem">
+                  <span class="pin-dot"></span>
+                </div>
+              </div>
+
+              <!-- Base 3D Artwork Backdrop -->
+              <div class="cube-art-backdrop">
+                <img src="assets/concept_hero_3d_clean.png" alt="3D cubic transformation from idea to digital solution" class="cube-art-img" loading="eager">
+              </div>
+
+              <!-- WebGL / Canvas for Real-Time Moving Cubes -->
+              <canvas id="cubeCanvas" class="cube-canvas"></canvas>
+
+              <!-- Continuous Dynamic CSS Floating Cubes along the Curve -->
+              <div class="animated-cubes-overlay" aria-hidden="true">
+                <div class="moving-cube cube-step-1"></div>
+                <div class="moving-cube cube-step-2"></div>
+                <div class="moving-cube cube-step-3"></div>
+                <div class="moving-cube cube-step-4"></div>
+              </div>
+
+            </div>
+          </div>
+
         </div>
 
-        <div class="hero-location-line">
-          <span class="hero-location-dot" aria-hidden="true"></span>
-          <span>Weboraa Technologies • Independent Digital Solutions • Coimbatore, Tamil Nadu</span>
+        <!-- 5-Step Process Track Strip -->
+        <div class="hero-process-strip" id="heroProcessStrip" aria-label="Five-step project evolution process">
+          
+          <!-- Step 1 -->
+          <button type="button" class="process-strip-card is-active" data-step="1" aria-label="Step 1: Your idea appears">
+            <div class="strip-card-top">
+              <span class="strip-step-badge">1</span>
+              <span class="strip-step-title">Your idea appears</span>
+            </div>
+            <div class="strip-card-visual">
+              <img src="assets/process_visual_1.png" alt="Single white idea cube" loading="lazy">
+            </div>
+            <div class="strip-card-progress"><div class="strip-progress-bar"></div></div>
+          </button>
+
+          <!-- Step 2 -->
+          <button type="button" class="process-strip-card" data-step="2" aria-label="Step 2: Cubes start moving">
+            <div class="strip-card-top">
+              <span class="strip-step-badge">2</span>
+              <span class="strip-step-title">Cubes start moving</span>
+            </div>
+            <div class="strip-card-visual">
+              <img src="assets/process_visual_2.png" alt="Cubes starting journey on trajectory" loading="lazy">
+            </div>
+            <div class="strip-card-progress"><div class="strip-progress-bar"></div></div>
+          </button>
+
+          <!-- Step 3 -->
+          <button type="button" class="process-strip-card" data-step="3" aria-label="Step 3: Cubes align and connect">
+            <div class="strip-card-top">
+              <span class="strip-step-badge">3</span>
+              <span class="strip-step-title">Cubes align and connect</span>
+            </div>
+            <div class="strip-card-visual">
+              <img src="assets/process_visual_3.png" alt="Cubes aligning in mid-flight" loading="lazy">
+            </div>
+            <div class="strip-card-progress"><div class="strip-progress-bar"></div></div>
+          </button>
+
+          <!-- Step 4 -->
+          <button type="button" class="process-strip-card" data-step="4" aria-label="Step 4: Structure forms">
+            <div class="strip-card-top">
+              <span class="strip-step-badge">4</span>
+              <span class="strip-step-title">Structure forms</span>
+            </div>
+            <div class="strip-card-visual">
+              <img src="assets/process_visual_4.png" alt="Cubes assembling into modular structure" loading="lazy">
+            </div>
+            <div class="strip-card-progress"><div class="strip-progress-bar"></div></div>
+          </button>
+
+          <!-- Step 5 -->
+          <button type="button" class="process-strip-card" data-step="5" aria-label="Step 5: Your digital solution">
+            <div class="strip-card-top">
+              <span class="strip-step-badge">5</span>
+              <span class="strip-step-title">Your digital solution</span>
+            </div>
+            <div class="strip-card-visual">
+              <img src="assets/process_visual_5.png" alt="Completed 2x2x2 cube digital solution" loading="lazy">
+            </div>
+            <div class="strip-card-progress"><div class="strip-progress-bar"></div></div>
+          </button>
+
         </div>
 
       </div>
@@ -1696,6 +2183,8 @@
   </div>
 
   <!-- Scripts -->
+  <script src="assets/three.min.js"></script>
+  <script src="cube-animation.js"></script>
   <script src="script.js?v=6.0"></script>
 </body>
 </html>
