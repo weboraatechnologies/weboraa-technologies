@@ -423,28 +423,26 @@
 
     .hero-trust-list {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      gap: 12px 28px;
-      padding-top: 28px;
-      border-top: 1px solid var(--border);
+      justify-content: center;
+      gap: 10px;
+      margin-top: 36px;
       width: 100%;
-      max-width: 860px;
     }
 
     .hero-trust-item {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       color: var(--text-body);
       font-weight: 500;
     }
 
     .trust-check-icon {
-      width: 18px;
-      height: 18px;
+      width: 16px;
+      height: 16px;
       color: var(--primary);
       flex-shrink: 0;
     }
@@ -457,7 +455,7 @@
     }
 
     .services-accordion-wrap {
-      max-width: 980px;
+      max-width: 960px;
       margin: 0 auto;
       border-top: 1px solid var(--border);
     }
@@ -471,16 +469,12 @@
       background-color: #F8FAFC;
     }
 
-    .service-accordion-item.is-open {
-      background-color: #FAFCFF;
-    }
-
     .service-accordion-header {
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 26px 16px;
+      padding: 22px 8px;
       background: transparent;
       border: none;
       cursor: pointer;
@@ -496,10 +490,10 @@
 
     .service-num {
       font-family: var(--font-mono);
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      width: 36px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #94A3B8;
+      width: 30px;
       flex-shrink: 0;
       transition: color 0.2s ease;
     }
@@ -510,7 +504,7 @@
     }
 
     .service-name {
-      font-size: clamp(1.2rem, 2.3vw, 1.45rem);
+      font-size: clamp(1.15rem, 2vw, 1.35rem);
       font-weight: 700;
       color: var(--text-heading);
       letter-spacing: -0.015em;
@@ -531,15 +525,14 @@
     }
 
     .service-toggle-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      border: 1px solid var(--border);
+      width: 20px;
+      height: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--text-muted);
-      background: var(--white);
+      color: #94A3B8;
+      background: transparent;
+      border: none;
       transition: all 0.25s ease;
       flex-shrink: 0;
     }
@@ -547,17 +540,15 @@
     .service-toggle-icon svg {
       width: 18px;
       height: 18px;
+      stroke-width: 2;
       transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .service-accordion-item:hover .service-toggle-icon {
-      border-color: #CBD5E1;
       color: var(--primary);
     }
 
     .service-accordion-item.is-open .service-toggle-icon {
-      background: #EFF6FF;
-      border-color: #BFDBFE;
       color: var(--primary);
     }
 
@@ -578,7 +569,7 @@
     }
 
     .service-panel-inner {
-      padding: 0 16px 32px 76px;
+      padding: 0 8px 30px 54px;
     }
 
     .service-panel-desc {
@@ -1474,7 +1465,7 @@
           <span class="section-eyebrow">DIGITAL SOLUTIONS & ENGINEERING</span>
           
           <h1 class="hero-title">
-            Digital solutions built around your <span class="hero-title-accent">business.</span>
+            Digital solutions built around<br><span class="hero-title-accent">your business.</span>
           </h1>
 
           <p class="hero-desc">
@@ -1519,17 +1510,17 @@
         
         <div class="section-header text-center">
           <span class="section-eyebrow">OUR SERVICES</span>
-          <h2 class="section-title">Everything your business needs to build, manage and grow.</h2>
+          <h2 class="section-title">Everything your business needs to build, manage and<br>grow.</h2>
           <p class="section-desc">
-            Explore our specialized capabilities below. Click any service to view exact deliverables, features, and direct project engagement.
+            Explore our specialized capabilities below. Click any service to view exact<br>deliverables, features, and direct project engagement.
           </p>
         </div>
 
         <div class="services-accordion-wrap" id="servicesAccordion">
           
           <!-- 01 Website Development -->
-          <div class="service-accordion-item is-open" data-service-index="01">
-            <button type="button" class="service-accordion-header" aria-expanded="true" aria-controls="service-panel-01" id="service-header-01">
+          <div class="service-accordion-item" data-service-index="01">
+            <button type="button" class="service-accordion-header" aria-expanded="false" aria-controls="service-panel-01" id="service-header-01">
               <div class="service-header-left">
                 <span class="service-num">01</span>
                 <h3 class="service-name">Website Development</h3>
@@ -1898,7 +1889,7 @@
           <!-- Narrative Left -->
           <div class="about-narrative">
             <span class="section-eyebrow">ABOUT WEBORAA</span>
-            <h2 class="section-title">Practical digital engineering based in Coimbatore.</h2>
+            <h2 class="section-title">Practical digital<br>engineering based in<br>Coimbatore.</h2>
             <p>
               <strong>Weboraa Technologies</strong> is an independent digital solutions company based in Coimbatore, Tamil Nadu. We partner with growing businesses, startups, and entrepreneurs to design, build, and deploy reliable software, modern websites, and digital marketing systems.
             </p>
@@ -1951,7 +1942,7 @@
       <div class="container">
         <div class="final-cta-box">
           <span class="final-cta-eyebrow">READY TO GROW?</span>
-          <h2 class="final-cta-title">Have a project in mind? Let's make it happen.</h2>
+          <h2 class="final-cta-title">Have a project in mind? Let's<br>make it happen.</h2>
           <p class="final-cta-desc">
             Tell us what you want to build, improve or promote. We'll discuss your requirements and help identify the right solution for your business.
           </p>
@@ -1989,7 +1980,7 @@
                 <span class="status-live-dot"></span>
                 <span>Available for New Projects</span>
               </div>
-              <h2 class="contact-main-heading">Let’s build something exceptional.</h2>
+              <h2 class="contact-main-heading">Let's build something<br>exceptional.</h2>
               <p class="contact-lead-text">
                 Have a product to launch, a web platform to engineer, or technical questions? Speak directly with our team.
               </p>
