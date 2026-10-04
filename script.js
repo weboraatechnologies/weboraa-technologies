@@ -150,56 +150,133 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --------------------------------------------------------------------------
-  // 4. Conversation / Project Quote Modal
+  // 4. Interactive Project Inquiry Modal
   // --------------------------------------------------------------------------
+  let lastActiveTrigger = null;
+  let isSubmittingInquiry = false;
+
   const conversationModal = document.getElementById('conversationModal');
   const closeConversationModalBtn = document.getElementById('closeConversationModal');
   const modalInquiryForm = document.getElementById('modalInquiryForm');
   const modalSuccessAlert = document.getElementById('modalSuccessAlert');
-  const modalServiceTag = document.getElementById('modalServiceTag');
-  const modalTitle = document.getElementById('modalTitle');
+  const modalErrorAlert = document.getElementById('modalErrorAlert');
   const modalServiceSelect = document.getElementById('modalService');
   const modalMessage = document.getElementById('modalMessage');
+  const modalName = document.getElementById('modalName');
+  const modalEmail = document.getElementById('modalEmail');
+  const modalPhone = document.getElementById('modalPhone');
+  const modalBudget = document.getElementById('modalBudget');
+  const modalTimeline = document.getElementById('modalTimeline');
+  const modalSubmitBtn = document.getElementById('modalSubmitBtn');
 
-  function openConversationModal(serviceName) {
+  // Error Message Elements
+  const errName = document.getElementById('errModalName');
+  const errEmail = document.getElementById('errModalEmail');
+  const errService = document.getElementById('errModalService');
+  const errMessage = document.getElementById('errModalMessage');
+
+  function clearFieldError(inputEl, errorEl) {
+    if (inputEl) inputEl.classList.remove('is-invalid');
+    if (errorEl) errorEl.classList.remove('is-visible');
+  }
+
+  function setFieldError(inputEl, errorEl, message) {
+    if (inputEl) inputEl.classList.add('is-invalid');
+    if (errorEl) {
+      if (message) errorEl.textContent = message;
+      errorEl.classList.add('is-visible');
+    }
+  }
+
+  function clearValidationErrors() {
+    clearFieldError(modalName, errName);
+    clearFieldError(modalEmail, errEmail);
+    clearFieldError(modalServiceSelect, errService);
+    clearFieldError(modalMessage, errMessage);
+  }
+
+  function hideAlerts() {
+    if (modalSuccessAlert) modalSuccessAlert.classList.remove('is-visible');
+    if (modalErrorAlert) modalErrorAlert.classList.remove('is-visible');
+  }
+
+  function setSelectByValue(selectEl, value) {
+    if (!selectEl) return;
+    for (let i = 0; i < selectEl.options.length; i++) {
+      if (selectEl.options[i].value === value) {
+        selectEl.selectedIndex = i;
+        break;
+      }
+    }
+  }
+
+  function openConversationModal(serviceName, triggerEl) {
     if (!conversationModal) return;
 
-    if (modalServiceTag) {
-      modalServiceTag.textContent = serviceName ? `Project Scope: ${serviceName}` : 'Fast Turnaround • 24h Response';
+    // Track active trigger for accessible focus return
+    if (triggerEl) {
+      lastActiveTrigger = triggerEl;
+    } else if (document.activeElement) {
+      lastActiveTrigger = document.activeElement;
     }
 
-    if (modalTitle) {
-      modalTitle.textContent = serviceName ? `Discuss ${serviceName}` : 'Get a Project Quote';
-    }
+    clearValidationErrors();
+    hideAlerts();
 
+    // Smart service selection based on clicked trigger
     if (modalServiceSelect && serviceName) {
-      // Find matching option in select
+      const normalized = serviceName.trim().toLowerCase();
+      let matched = false;
+
       for (let i = 0; i < modalServiceSelect.options.length; i++) {
-        if (modalServiceSelect.options[i].text.toLowerCase().includes(serviceName.toLowerCase()) ||
-            serviceName.toLowerCase().includes(modalServiceSelect.options[i].text.toLowerCase())) {
+        const optText = modalServiceSelect.options[i].text.toLowerCase();
+        const optVal = modalServiceSelect.options[i].value.toLowerCase();
+        if (optVal && (normalized.includes(optText) || optText.includes(normalized))) {
           modalServiceSelect.selectedIndex = i;
+          matched = true;
           break;
+        }
+      }
+
+      if (!matched) {
+        if (normalized.includes('web') || normalized.includes('e-commerce') || normalized.includes('store')) {
+          setSelectByValue(modalServiceSelect, 'Website Development');
+        } else if (normalized.includes('software') || normalized.includes('erp') || normalized.includes('automation')) {
+          setSelectByValue(modalServiceSelect, 'Business Software / ERP');
+        } else if (normalized.includes('ui') || normalized.includes('ux') || normalized.includes('design')) {
+          setSelectByValue(modalServiceSelect, 'UI/UX Design');
+        } else if (normalized.includes('label') || normalized.includes('pack') || normalized.includes('poster')) {
+          setSelectByValue(modalServiceSelect, 'Packaging & Label Design');
+        } else if (normalized.includes('market') || normalized.includes('seo')) {
+          setSelectByValue(modalServiceSelect, 'Digital Marketing');
+        } else if (normalized.includes('consult')) {
+          setSelectByValue(modalServiceSelect, 'Technology Consulting');
         }
       }
     }
 
-    if (modalMessage && serviceName && !modalMessage.value) {
-      modalMessage.value = `Hi Weboraa team, I would like to get a quote and discuss our requirements for ${serviceName}.`;
+    // Contextual message suggestion for specific services
+    if (modalMessage && serviceName && !modalMessage.value.trim()) {
+      if (serviceName !== 'Project Inquiry' && serviceName !== 'Project Inception' && serviceName !== 'Partnership Discussion') {
+        modalMessage.value = `Hi Weboraa team, I would like to discuss our requirements for ${serviceName}.`;
+      }
     }
 
+    // Open modal dialog
     conversationModal.classList.add('is-open');
     conversationModal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
 
-    // Focus on first input without layout shift
-    const firstInput = document.getElementById('modalName');
-    if (firstInput) {
-      try {
-        firstInput.focus({ preventScroll: true });
-      } catch (err) {
-        firstInput.focus();
+    // Focus on first input
+    setTimeout(() => {
+      if (modalName) {
+        try {
+          modalName.focus({ preventScroll: true });
+        } catch (e) {
+          modalName.focus();
+        }
       }
-    }
+    }, 50);
   }
 
   function closeConversationModal() {
@@ -207,6 +284,15 @@ document.addEventListener('DOMContentLoaded', () => {
     conversationModal.classList.remove('is-open');
     conversationModal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+
+    // Restore focus to opening button
+    if (lastActiveTrigger && typeof lastActiveTrigger.focus === 'function') {
+      try {
+        lastActiveTrigger.focus({ preventScroll: true });
+      } catch (e) {
+        lastActiveTrigger.focus();
+      }
+    }
   }
 
   if (closeConversationModalBtn) {
@@ -217,6 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (conversationModal) {
+    // Backdrop click closes modal
     conversationModal.addEventListener('click', (e) => {
       if (e.target === conversationModal) {
         e.preventDefault();
@@ -224,6 +311,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
+    // Clicks inside modal box do NOT close modal
+    const modalBox = conversationModal.querySelector('.modal-box');
+    if (modalBox) {
+      modalBox.addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
+    }
+
+    // Escape key closes modal
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && conversationModal.classList.contains('is-open')) {
         closeConversationModal();
@@ -231,59 +327,125 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Bind all quote / discussion triggers
+  // Bind all project inquiry CTAs across navbar, hero, services, about, and contact sections
   document.querySelectorAll('[data-open-modal="conversation"]').forEach(trigger => {
-    trigger.addEventListener('click', function(e) {
+    trigger.addEventListener('click', function (e) {
       e.preventDefault();
       const service = this.getAttribute('data-service') || '';
-      openConversationModal(service);
+      openConversationModal(service, this);
     });
   });
 
-  // Modal Form Submission
+  // Real-time error clearance on user interaction
+  if (modalName) {
+    modalName.addEventListener('input', () => {
+      if (modalName.value.trim()) clearFieldError(modalName, errName);
+    });
+  }
+  if (modalEmail) {
+    modalEmail.addEventListener('input', () => {
+      if (/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(modalEmail.value.trim())) {
+        clearFieldError(modalEmail, errEmail);
+      }
+    });
+  }
+  if (modalServiceSelect) {
+    modalServiceSelect.addEventListener('change', () => {
+      if (modalServiceSelect.value) clearFieldError(modalServiceSelect, errService);
+    });
+  }
+  if (modalMessage) {
+    modalMessage.addEventListener('input', () => {
+      if (modalMessage.value.trim()) clearFieldError(modalMessage, errMessage);
+    });
+  }
+
+  // Modal Form Submission Handler
   if (modalInquiryForm) {
     modalInquiryForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const name = document.getElementById('modalName');
-      const email = document.getElementById('modalEmail');
-      const message = document.getElementById('modalMessage');
-      const submitBtn = modalInquiryForm.querySelector('button[type="submit"]');
+      if (isSubmittingInquiry) return;
 
-      if (!name || !name.value.trim()) {
-        alert('Please enter your full name.');
-        if (name) name.focus({ preventScroll: true });
+      clearValidationErrors();
+      hideAlerts();
+
+      // Check honeypot anti-spam
+      const honey1 = modalInquiryForm.querySelector('input[name="_honey"]');
+      const honey2 = document.getElementById('modalWebsiteHoneypot');
+      if ((honey1 && honey1.value.trim() !== '') || (honey2 && honey2.value.trim() !== '')) {
+        modalInquiryForm.reset();
+        closeConversationModal();
         return;
       }
 
-      if (!email || !email.value.trim() || !email.value.includes('@') || !email.value.includes('.')) {
-        alert('Please provide a valid email address.');
-        if (email) email.focus({ preventScroll: true });
+      // Validate required fields
+      let hasError = false;
+      let firstInvalidEl = null;
+
+      const nameVal = modalName ? modalName.value.trim() : '';
+      const emailVal = modalEmail ? modalEmail.value.trim() : '';
+      const serviceVal = modalServiceSelect ? modalServiceSelect.value : '';
+      const messageVal = modalMessage ? modalMessage.value.trim() : '';
+
+      if (!nameVal) {
+        setFieldError(modalName, errName, 'Please enter your full name.');
+        hasError = true;
+        if (!firstInvalidEl) firstInvalidEl = modalName;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      if (!emailVal) {
+        setFieldError(modalEmail, errEmail, 'Please enter your email address.');
+        hasError = true;
+        if (!firstInvalidEl) firstInvalidEl = modalEmail;
+      } else if (!emailRegex.test(emailVal)) {
+        setFieldError(modalEmail, errEmail, 'Please enter a valid email address (e.g. name@domain.com).');
+        hasError = true;
+        if (!firstInvalidEl) firstInvalidEl = modalEmail;
+      }
+
+      if (!serviceVal) {
+        setFieldError(modalServiceSelect, errService, 'Please select the service required.');
+        hasError = true;
+        if (!firstInvalidEl) firstInvalidEl = modalServiceSelect;
+      }
+
+      if (!messageVal) {
+        setFieldError(modalMessage, errMessage, 'Please tell us about your project requirements.');
+        hasError = true;
+        if (!firstInvalidEl) firstInvalidEl = modalMessage;
+      }
+
+      if (hasError) {
+        if (firstInvalidEl) {
+          try {
+            firstInvalidEl.focus({ preventScroll: true });
+          } catch (err) {
+            firstInvalidEl.focus();
+          }
+        }
         return;
       }
 
-      if (!message || !message.value.trim()) {
-        alert('Please provide a brief description of your project.');
-        if (message) message.focus({ preventScroll: true });
-        return;
-      }
+      // Enter submission state
+      isSubmittingInquiry = true;
+      const submitBtn = modalSubmitBtn || modalInquiryForm.querySelector('button[type="submit"]');
+      const originalBtnHTML = submitBtn ? submitBtn.innerHTML : '<span>Submit Inquiry</span>';
 
-      const origText = submitBtn.innerHTML;
-      submitBtn.innerHTML = '<span>Sending quote request...</span>';
-      submitBtn.disabled = true;
+      if (submitBtn) {
+        submitBtn.innerHTML = '<span>Sending inquiry...</span>';
+        submitBtn.disabled = true;
+      }
 
       let isSuccess = false;
 
       try {
         const formData = new FormData(modalInquiryForm);
-        // Anti-spam check
-        if (formData.get('_honey')) {
-          submitBtn.innerHTML = origText;
-          submitBtn.disabled = false;
-          modalInquiryForm.reset();
-          closeConversationModal();
-          return;
-        }
+        formData.set('name', nameVal);
+        formData.set('email', emailVal);
+        formData.set('service', serviceVal);
+        formData.set('message', messageVal);
 
         const endpoint = modalInquiryForm.getAttribute('action') || 'https://formsubmit.co/ajax/weboraatechnologies@gmail.com';
         const ajaxEndpoint = endpoint.includes('/ajax/') ? endpoint : endpoint.replace('formsubmit.co/', 'formsubmit.co/ajax/');
@@ -299,27 +461,36 @@ document.addEventListener('DOMContentLoaded', () => {
         if (response.ok) {
           isSuccess = true;
         } else {
-          console.error('Modal submission returned status:', response.status);
+          console.error('Modal inquiry submission returned HTTP status:', response.status);
         }
       } catch (err) {
-        console.warn('Form submission notice:', err);
+        console.warn('Modal inquiry network exception:', err);
       } finally {
-        submitBtn.innerHTML = origText;
-        submitBtn.disabled = false;
+        isSubmittingInquiry = false;
+        if (submitBtn) {
+          submitBtn.innerHTML = originalBtnHTML;
+          submitBtn.disabled = false;
+        }
 
         if (isSuccess) {
+          // Success State: Clear form & show success confirmation
           modalInquiryForm.reset();
           if (modalSuccessAlert) {
-            modalSuccessAlert.style.display = 'flex';
-            setTimeout(() => {
-              modalSuccessAlert.style.display = 'none';
-              closeConversationModal();
-            }, 3000);
-          } else {
-            closeConversationModal();
+            modalSuccessAlert.classList.add('is-visible');
+            modalSuccessAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+          if (modalErrorAlert) {
+            modalErrorAlert.classList.remove('is-visible');
           }
         } else {
-          alert('We encountered an issue submitting your request. Please email us directly at weboraatechnologies@gmail.com or WhatsApp +91 89290 99993.');
+          // Error State: Retain all entered data, display error with direct contacts
+          if (modalErrorAlert) {
+            modalErrorAlert.classList.add('is-visible');
+            modalErrorAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+          if (modalSuccessAlert) {
+            modalSuccessAlert.classList.remove('is-visible');
+          }
         }
       }
     });
@@ -419,111 +590,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --------------------------------------------------------------------------
-  // 6. Contact Form Validation & Submission
-  // --------------------------------------------------------------------------
-  const contactForm = document.getElementById('projectInquiryForm');
-  const formSuccessAlert = document.getElementById('formSuccessAlert');
-  const formErrorAlert = document.getElementById('formErrorAlert');
-
-  if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      // Check anti-spam honeypot
-      const honeypot = document.getElementById('contactWebsiteHoneypot');
-      if (honeypot && honeypot.value.trim() !== '') {
-        // Silent bot discard
-        return;
-      }
-
-      const name = document.getElementById('contactName');
-      const email = document.getElementById('contactEmail');
-      const service = document.getElementById('contactService');
-      const message = document.getElementById('contactMessage');
-      const submitBtn = contactForm.querySelector('button[type="submit"]');
-
-      if (!name || !name.value.trim()) {
-        alert('Please enter your full name.');
-        if (name) name.focus();
-        return;
-      }
-
-      if (!email || !email.value.trim() || !email.value.includes('@') || !email.value.includes('.')) {
-        alert('Please provide a valid email address.');
-        if (email) email.focus();
-        return;
-      }
-
-      if (service && !service.value) {
-        alert('Please select the service required.');
-        service.focus();
-        return;
-      }
-
-      if (!message || !message.value.trim()) {
-        alert('Please tell us about your project requirements.');
-        if (message) message.focus();
-        return;
-      }
-
-      const originalBtnHTML = submitBtn.innerHTML;
-      submitBtn.innerHTML = '<span>Sending inquiry...</span>';
-      submitBtn.disabled = true;
-
-      let isSuccess = false;
-
-      try {
-        const formData = new FormData(contactForm);
-        // Anti-spam check
-        if (formData.get('_honey') || (honeypot && honeypot.value.trim() !== '')) {
-          submitBtn.innerHTML = originalBtnHTML;
-          submitBtn.disabled = false;
-          contactForm.reset();
-          return;
-        }
-
-        const endpoint = contactForm.getAttribute('action') || 'https://formsubmit.co/ajax/weboraatechnologies@gmail.com';
-        const ajaxEndpoint = endpoint.includes('/ajax/') ? endpoint : endpoint.replace('formsubmit.co/', 'formsubmit.co/ajax/');
-
-        const response = await fetch(ajaxEndpoint, {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json'
-          },
-          body: formData
-        });
-
-        if (response.ok) {
-          isSuccess = true;
-        } else {
-          console.error('Project inquiry submission returned status:', response.status);
-        }
-      } catch (err) {
-        console.warn('Form submission network error:', err);
-      } finally {
-        submitBtn.innerHTML = originalBtnHTML;
-        submitBtn.disabled = false;
-
-        if (isSuccess) {
-          if (formSuccessAlert) {
-            formSuccessAlert.style.display = 'flex';
-            formSuccessAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          }
-          if (formErrorAlert) formErrorAlert.style.display = 'none';
-          contactForm.reset();
-        } else {
-          if (formErrorAlert) {
-            formErrorAlert.style.display = 'flex';
-            formErrorAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          }
-          if (formSuccessAlert) formSuccessAlert.style.display = 'none';
-        }
-      }
-    });
-  }
-
-  // --------------------------------------------------------------------------
-  // 7. Services Clean Expandable Accordion
+  // 6. Services Clean Expandable Accordion
   // --------------------------------------------------------------------------
   const accordionItems = document.querySelectorAll('.service-accordion-item');
   if (accordionItems.length > 0) {
@@ -557,7 +624,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --------------------------------------------------------------------------
-  // 8. Dynamic Year in Footer
+  // 7. Dynamic Year in Footer
   // --------------------------------------------------------------------------
   const currentYearEl = document.getElementById('currentYear');
   if (currentYearEl) {

@@ -49,7 +49,6 @@
   <style>
     /* ==========================================================================
        WEBORAA TECHNOLOGIES — DESIGN SYSTEM
-       Design philosophy: Less content. Stronger identity. Clear visual storytelling.
        Palette:
        - Deep Navy: #101D2D
        - Brand Blue: #2678F5
@@ -99,7 +98,7 @@
       /* Minimal Shadows */
       --shadow-sm: 0 1px 2px rgba(16, 29, 45, 0.04);
       --shadow-hover: 0 4px 12px rgba(16, 29, 45, 0.06);
-      --shadow-modal: 0 20px 40px -12px rgba(16, 29, 45, 0.25);
+      --shadow-modal: 0 20px 48px -8px rgba(16, 29, 45, 0.28), 0 8px 16px rgba(16, 29, 45, 0.08);
 
       /* Typography */
       --font-heading: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -465,6 +464,7 @@
       width: 100%;
       border-left: 3px solid transparent;
       transition: all 0.15s ease;
+      cursor: pointer;
     }
 
     .service-row-link:hover {
@@ -629,44 +629,63 @@
     }
 
     /* ==========================================================================
-       SECTION 5: CONTACT
+       SECTION 5: CONTACT (Interactive Section with Start Your Project CTA)
        ========================================================================== */
     .contact-section {
       background-color: var(--bg-surface);
       border-bottom: 1px solid var(--border);
     }
 
-    .contact-grid {
+    .contact-box-wrap {
       display: grid;
-      grid-template-columns: 1fr 1.25fr;
+      grid-template-columns: 1.15fr 0.85fr;
       gap: var(--space-8);
-      align-items: start;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-sm);
     }
 
-    .contact-info-col {
+    .contact-main-col {
       display: flex;
       flex-direction: column;
-      gap: var(--space-4);
+      justify-content: center;
     }
 
-    .contact-info-desc {
-      font-size: 1rem;
-      color: var(--text-body);
-      line-height: 1.6;
+    .contact-cta-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: var(--space-4);
+      flex-wrap: wrap;
     }
 
-    .contact-direct-card {
+    .contact-details-col {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
       background: var(--bg-soft);
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
-      padding: 14px 16px;
+      padding: 24px;
+    }
+
+    .contact-detail-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
     }
 
-    .contact-direct-label {
+    .contact-detail-item:last-of-type {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .contact-detail-label {
       font-size: 0.75rem;
       font-weight: 600;
       color: var(--text-muted);
@@ -674,7 +693,7 @@
       letter-spacing: 0.05em;
     }
 
-    .contact-direct-value {
+    .contact-detail-value {
       font-size: 0.96rem;
       font-weight: 600;
       color: var(--text-heading);
@@ -707,10 +726,8 @@
       font-size: 0.88rem;
       color: var(--text-muted);
       line-height: 1.5;
-      padding: 12px 14px;
-      background: var(--bg-soft);
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border);
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
     }
 
     .contact-social-row {
@@ -718,31 +735,109 @@
       align-items: center;
       gap: 10px;
       flex-wrap: wrap;
+      margin-top: 4px;
     }
 
     .social-link-pill {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--text-body);
-      background: var(--bg-soft);
+      background: #FFFFFF;
       border: 1px solid var(--border);
-      padding: 6px 14px;
+      padding: 4px 12px;
       border-radius: var(--radius-pill);
       transition: all 0.15s ease;
     }
 
     .social-link-pill:hover {
-      background: #FFFFFF;
       color: var(--primary);
       border-color: var(--primary-border);
     }
 
-    /* Contact Form */
-    .contact-form-panel {
+    /* ==========================================================================
+       MODAL: Interactive Project Inquiry Dialog
+       ========================================================================== */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(16, 29, 45, 0.65);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+
+    .modal-backdrop.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-box {
       background: #FFFFFF;
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: var(--space-5);
-      box-shadow: var(--shadow-sm);
+      box-shadow: var(--shadow-modal);
+      width: 100%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 32px 36px;
+      position: relative;
+      transform: scale(0.96) translateY(8px);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .modal-backdrop.is-open .modal-box {
+      transform: scale(1) translateY(0);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .modal-close-btn:hover {
+      background: #FFFFFF;
+      color: var(--text-heading);
+      border-color: #CBD5E1;
+    }
+
+    .modal-header {
+      margin-bottom: 20px;
+      padding-right: 36px;
+    }
+
+    .modal-title {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 4px;
+      letter-spacing: -0.02em;
+    }
+
+    .modal-subtitle {
+      font-size: 0.94rem;
+      color: var(--text-muted);
     }
 
     .form-grid-2 {
@@ -783,7 +878,7 @@
 
     .form-control:focus {
       border-color: var(--border-focus);
-      box-shadow: 0 0 0 3px rgba(38, 120, 245, 0.1);
+      box-shadow: 0 0 0 3px rgba(38, 120, 245, 0.12);
     }
 
     .form-control::placeholder {
@@ -795,6 +890,35 @@
       min-height: 95px;
     }
 
+    .form-privacy-note {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin-top: 12px;
+    }
+
+    .form-control.is-invalid {
+      border-color: #EF4444 !important;
+      background-color: #FEF2F2 !important;
+    }
+
+    .form-control.is-invalid:focus {
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
+    }
+
+    .form-field-error {
+      display: none;
+      font-size: 0.78rem;
+      color: #DC2626;
+      font-weight: 500;
+      margin-top: 4px;
+      line-height: 1.3;
+    }
+
+    .form-field-error.is-visible {
+      display: block;
+    }
+
     .form-feedback-alert {
       display: none;
       padding: 12px 14px;
@@ -804,22 +928,22 @@
       line-height: 1.5;
     }
 
+    .form-feedback-alert.is-visible {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
     .form-feedback-alert.alert-success {
       background-color: var(--success-subtle);
       border: 1px solid #A7F3D0;
       color: #065F46;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
     }
 
     .form-feedback-alert.alert-error {
       background-color: var(--danger-subtle);
       border: 1px solid #FECACA;
       color: #991B1B;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
     }
 
     /* ==========================================================================
@@ -898,83 +1022,6 @@
     }
 
     /* ==========================================================================
-       MODAL: Project Quote / Consultation
-       ========================================================================== */
-    .modal-backdrop {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(16, 29, 45, 0.6);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.2s ease, visibility 0.2s ease;
-    }
-
-    .modal-backdrop.is-open {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .modal-box {
-      background: #FFFFFF;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-modal);
-      width: 100%;
-      max-width: 520px;
-      max-height: 90vh;
-      overflow-y: auto;
-      padding: var(--space-5);
-      position: relative;
-      transform: translateY(8px);
-      transition: transform 0.2s ease;
-    }
-
-    .modal-backdrop.is-open .modal-box {
-      transform: translateY(0);
-    }
-
-    .modal-close-btn {
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      background: var(--bg-soft);
-      border: 1px solid var(--border);
-      border-radius: 50%;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-
-    .modal-close-btn:hover {
-      background: #FFFFFF;
-      color: var(--text-heading);
-      border-color: #CBD5E1;
-    }
-
-    .modal-title {
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--text-heading);
-      margin-bottom: 16px;
-      padding-right: 32px;
-    }
-
-    /* ==========================================================================
        RESPONSIVE BREAKPOINTS (360px, 390px, 768px, 1024px, 1440px)
        ========================================================================== */
     @media (max-width: 1024px) {
@@ -992,7 +1039,7 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .contact-grid {
+      .contact-box-wrap {
         grid-template-columns: 1fr;
         gap: var(--space-6);
       }
@@ -1046,6 +1093,14 @@
         grid-template-columns: 1fr;
       }
 
+      .contact-box-wrap {
+        padding: 24px;
+      }
+
+      .modal-box {
+        padding: 24px 20px;
+      }
+
       .form-grid-2 {
         grid-template-columns: 1fr;
       }
@@ -1065,6 +1120,15 @@
         width: 100%;
       }
 
+      .contact-cta-row {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .contact-cta-row .btn {
+        width: 100%;
+      }
+
       .footer-grid {
         grid-template-columns: 1fr;
       }
@@ -1075,7 +1139,7 @@
       }
     }
 
-    /* Reduced Motion */
+    /* Accessibility: Reduced Motion */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -1110,7 +1174,7 @@
 
       <!-- Primary Action -->
       <div class="nav-actions">
-        <button type="button" class="btn btn-primary btn-sm" data-open-modal="conversation" data-service="Project Consultation">
+        <button type="button" class="btn btn-primary btn-sm" data-open-modal="conversation" data-service="Project Inquiry">
           <span>Start a Project</span>
           <span class="btn-arrow" aria-hidden="true">→</span>
         </button>
@@ -1200,7 +1264,7 @@
 
             <!-- 3. ERP & Business Software -->
             <li class="service-item">
-              <a href="javascript:void(0);" class="service-row-link" data-open-modal="conversation" data-service="ERP & Business Software">
+              <a href="javascript:void(0);" class="service-row-link" data-open-modal="conversation" data-service="Business Software / ERP">
                 <span class="service-name">ERP & Business Software</span>
                 <span class="service-desc">Tailored management software to unify inventory, invoicing, order pipelines, and internal operations.</span>
                 <span class="service-action-col">
@@ -1236,7 +1300,7 @@
 
             <!-- 6. Label & Poster designing -->
             <li class="service-item">
-              <a href="javascript:void(0);" class="service-row-link" data-open-modal="conversation" data-service="Label & Poster designing">
+              <a href="javascript:void(0);" class="service-row-link" data-open-modal="conversation" data-service="Packaging & Label Design">
                 <span class="service-name">Label & Poster designing</span>
                 <span class="service-desc">Commercial packaging labels, precision stickers, and marketing posters ready for print production.</span>
                 <span class="service-action-col">
@@ -1248,7 +1312,7 @@
 
             <!-- 7. Social Media & Digital Marketing -->
             <li class="service-item">
-              <a href="javascript:void(0);" class="service-row-link" data-open-modal="conversation" data-service="Social Media & Digital Marketing">
+              <a href="javascript:void(0);" class="service-row-link" data-open-modal="conversation" data-service="Digital Marketing">
                 <span class="service-name">Social Media & Digital Marketing</span>
                 <span class="service-desc">Targeted campaigns, brand positioning, and digital marketing to connect with active prospective clients.</span>
                 <span class="service-action-col">
@@ -1363,29 +1427,37 @@
     </section>
 
     <!-- ======================================================================
-         SECTION 5 — CONTACT
+         SECTION 5 — CONTACT (Form removed from page; interactive CTA to modal)
          ====================================================================== -->
     <section class="contact-section section-padding" id="contact" aria-labelledby="contactHeading">
       <div class="container">
         
-        <div class="section-header">
-          <h2 class="section-heading" id="contactHeading">Have a project in mind?</h2>
-          <p class="section-subtext">Tell us what you need. Let's discuss the next step.</p>
-        </div>
-
-        <div class="contact-grid">
+        <div class="contact-box-wrap">
           
-          <!-- Left Column: Direct Info -->
-          <div class="contact-info-col">
-            <p class="contact-info-desc">
-              Whether you are planning a new website, business software, packaging design, or digital marketing, reach out directly or send your project details.
-            </p>
+          <!-- Left: Narrative & Primary CTAs -->
+          <div class="contact-main-col">
+            <h2 class="section-heading" id="contactHeading">Have a project in mind?</h2>
+            <p class="section-subtext">Tell us what you're planning. Let's turn your idea into something impactful.</p>
+            
+            <div class="contact-cta-row">
+              <button type="button" class="btn btn-primary btn-lg" data-open-modal="conversation" data-service="Project Inquiry" id="contactStartProjectBtn">
+                <span>Start Your Project</span>
+                <span class="btn-arrow" aria-hidden="true">→</span>
+              </button>
+              <a href="https://wa.me/918929099993?text=Hi%20Weboraa%20Technologies%2C%20I%20have%20a%20project%20in%20mind." target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg">
+                <span>Chat on WhatsApp</span>
+              </a>
+            </div>
+          </div>
 
+          <!-- Right: Compact Verified Details -->
+          <div class="contact-details-col">
+            
             <!-- Direct Email -->
-            <div class="contact-direct-card">
+            <div class="contact-detail-item">
               <div>
-                <div class="contact-direct-label">Direct Email</div>
-                <a href="mailto:weboraatechnologies@gmail.com" class="contact-direct-value">weboraatechnologies@gmail.com</a>
+                <div class="contact-detail-label">Direct Email</div>
+                <a href="mailto:weboraatechnologies@gmail.com" class="contact-detail-value">weboraatechnologies@gmail.com</a>
               </div>
               <button type="button" class="copy-chip-btn" id="copyEmailBtn" aria-label="Copy email address">
                 <span class="copy-text">Copy</span>
@@ -1393,134 +1465,31 @@
             </div>
 
             <!-- Phone & WhatsApp -->
-            <div class="contact-direct-card">
+            <div class="contact-detail-item">
               <div>
-                <div class="contact-direct-label">Phone & WhatsApp</div>
-                <a href="tel:+918929099993" class="contact-direct-value">+91 89290 99993</a>
+                <div class="contact-detail-label">Phone & WhatsApp</div>
+                <a href="tel:+918929099993" class="contact-detail-value">+91 89290 99993</a>
               </div>
-              <a href="https://wa.me/918929099993?text=Hi%20Weboraa%20Technologies%2C%20I%20have%20a%20project%20in%20mind." target="_blank" rel="noopener noreferrer" class="copy-chip-btn">
-                <span>Chat</span>
-              </a>
             </div>
 
             <!-- Location -->
-            <div class="contact-direct-card">
+            <div class="contact-detail-item">
               <div>
-                <div class="contact-direct-label">Location</div>
-                <div class="contact-direct-value">Coimbatore, Tamil Nadu, India</div>
+                <div class="contact-detail-label">Location</div>
+                <div class="contact-detail-value">Coimbatore, Tamil Nadu, India</div>
               </div>
             </div>
 
-            <!-- Response Note -->
+            <!-- Response Note & Social Links -->
             <div class="contact-response-note">
-              Every inquiry is reviewed directly by our technical lead. We typically respond within <strong>4 to 6 business hours</strong>.
+              Every inquiry is reviewed directly by our engineering lead. We typically respond within <strong>4 to 6 business hours</strong>.
+              <div class="contact-social-row" style="margin-top: 10px;">
+                <a href="https://wa.me/918929099993" target="_blank" rel="noopener noreferrer" class="social-link-pill">WhatsApp</a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link-pill">LinkedIn</a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link-pill">Instagram</a>
+              </div>
             </div>
 
-            <!-- Social Links -->
-            <div class="contact-social-row">
-              <a href="https://wa.me/918929099993" target="_blank" rel="noopener noreferrer" class="social-link-pill">WhatsApp</a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link-pill">LinkedIn</a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link-pill">Instagram</a>
-            </div>
-
-          </div>
-
-          <!-- Right Column: Compact Inquiry Form -->
-          <div class="contact-form-panel">
-            <form id="projectInquiryForm" action="https://formsubmit.co/ajax/weboraatechnologies@gmail.com" method="POST" novalidate>
-              
-              <!-- Anti-Spam Honeypots -->
-              <input type="text" name="_honey" style="display:none !important;" tabindex="-1" autocomplete="off">
-              <input type="text" id="contactWebsiteHoneypot" name="company_website_url_check" style="display:none !important;" tabindex="-1" autocomplete="off">
-
-              <!-- FormSubmit Settings -->
-              <input type="hidden" name="_subject" value="New Project Inquiry — Weboraa Technologies">
-              <input type="hidden" name="_template" value="table">
-              <input type="hidden" name="_captcha" value="false">
-
-              <div class="form-grid-2">
-                <div class="form-group">
-                  <label for="contactName" class="form-label">Name <span class="req">*</span></label>
-                  <input type="text" id="contactName" name="name" class="form-control" placeholder="Your name" required>
-                </div>
-
-                <div class="form-group">
-                  <label for="contactEmail" class="form-label">Email <span class="req">*</span></label>
-                  <input type="email" id="contactEmail" name="email" class="form-control" placeholder="you@company.com" required>
-                </div>
-              </div>
-
-              <div class="form-grid-2">
-                <div class="form-group">
-                  <label for="contactService" class="form-label">Service Required <span class="req">*</span></label>
-                  <select id="contactService" name="service" class="form-control" required>
-                    <option value="" disabled selected>Select a Service</option>
-                    <option value="Website Development">Website Development</option>
-                    <option value="E-commerce Development">E-commerce Development</option>
-                    <option value="ERP & Business Software">ERP & Business Software</option>
-                    <option value="UI/UX Design">UI/UX Design</option>
-                    <option value="Custom Software & Automation">Custom Software & Automation</option>
-                    <option value="Label & Poster designing">Label & Poster designing</option>
-                    <option value="Social Media & Digital Marketing">Social Media & Digital Marketing</option>
-                    <option value="General Consultation">General Consultation</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label for="contactPhone" class="form-label">Phone or WhatsApp</label>
-                  <input type="tel" id="contactPhone" name="phone" class="form-control" placeholder="+91 ...">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="contactMessage" class="form-label">Project Message <span class="req">*</span></label>
-                <textarea id="contactMessage" name="message" class="form-control" rows="3" placeholder="Briefly describe what you are looking to build or solve..." required></textarea>
-              </div>
-
-              <div class="form-grid-2">
-                <div class="form-group">
-                  <label for="contactBudget" class="form-label">Budget (Optional)</label>
-                  <select id="contactBudget" name="budget" class="form-control">
-                    <option value="Not Specified">Select budget range</option>
-                    <option value="Under ₹25,000">Under ₹25,000</option>
-                    <option value="₹25,000 – ₹50,000">₹25,000 – ₹50,000</option>
-                    <option value="₹50,000 – ₹1,00,000">₹50,000 – ₹1,00,000</option>
-                    <option value="Above ₹1,00,000">Above ₹1,00,000</option>
-                    <option value="Flexible">Flexible</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label for="contactTimeline" class="form-label">Timeline (Optional)</label>
-                  <select id="contactTimeline" name="timeline" class="form-control">
-                    <option value="Flexible">Select timeline</option>
-                    <option value="Immediate (Within 2 weeks)">Immediate (Within 2 weeks)</option>
-                    <option value="2 to 4 weeks">2 to 4 weeks</option>
-                    <option value="1 to 2 months">1 to 2 months</option>
-                    <option value="Planning / Exploring">Planning / Exploring</option>
-                  </select>
-                </div>
-              </div>
-
-              <button type="submit" class="btn btn-primary btn-block btn-lg" id="contactSubmitBtn">
-                <span>Send Inquiry</span>
-                <span class="btn-arrow" aria-hidden="true">→</span>
-              </button>
-
-              <!-- Feedback Alerts -->
-              <div id="formSuccessAlert" class="form-feedback-alert alert-success" role="status" aria-live="polite">
-                <div>
-                  <strong>Inquiry Received.</strong> Thank you! We will review your message and respond within 4–6 business hours.
-                </div>
-              </div>
-
-              <div id="formErrorAlert" class="form-feedback-alert alert-error" role="alert" aria-live="assertive">
-                <div>
-                  <strong>Submission Error.</strong> We couldn't send your message right now. Please email us directly at <a href="mailto:weboraatechnologies@gmail.com" style="text-decoration:underline;">weboraatechnologies@gmail.com</a> or WhatsApp <a href="tel:+918929099993" style="text-decoration:underline;">+91 89290 99993</a>.
-                </div>
-              </div>
-
-            </form>
           </div>
 
         </div>
@@ -1598,7 +1567,7 @@
   </footer>
 
   <!-- ========================================================================
-       MODAL: Project Consultation
+       MODAL: Interactive Project Inquiry Dialog
        ======================================================================== -->
   <div class="modal-backdrop" id="conversationModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-box">
@@ -1606,68 +1575,127 @@
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </button>
 
-      <h3 class="modal-title" id="modalTitle">Discuss Your Project</h3>
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalTitle">Let's discuss your project.</h3>
+        <p class="modal-subtitle">Share a few details and we'll get back to you.</p>
+      </div>
 
       <form id="modalInquiryForm" action="https://formsubmit.co/ajax/weboraatechnologies@gmail.com" method="POST" novalidate>
-        <!-- Anti-Spam Honeypot -->
+        <!-- Anti-Spam Honeypots -->
         <input type="text" name="_honey" style="display:none !important;" tabindex="-1" autocomplete="off">
+        <input type="text" id="modalWebsiteHoneypot" name="company_website_url_check" style="display:none !important;" tabindex="-1" autocomplete="off">
 
         <!-- FormSubmit Settings -->
-        <input type="hidden" name="_subject" value="New Project Consultation Request — Weboraa Technologies">
+        <input type="hidden" name="_subject" value="New Project Inquiry — Weboraa Technologies">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
 
-        <div style="display: flex; flex-direction: column; gap: 12px;">
-          <div class="form-group" style="margin-bottom:0;">
+        <div class="form-grid-2">
+          <!-- 1. Name (Required) -->
+          <div class="form-group">
             <label for="modalName" class="form-label">Full Name <span class="req">*</span></label>
-            <input type="text" id="modalName" name="name" class="form-control" placeholder="Your name" required>
+            <input type="text" id="modalName" name="name" class="form-control" placeholder="Your name" required autocomplete="name">
+            <span class="form-field-error" id="errModalName" role="alert">Please enter your full name.</span>
           </div>
 
-          <div class="form-group" style="margin-bottom:0;">
+          <!-- 2. Email (Required) -->
+          <div class="form-group">
             <label for="modalEmail" class="form-label">Email Address <span class="req">*</span></label>
-            <input type="email" id="modalEmail" name="email" class="form-control" placeholder="you@company.com" required>
+            <input type="email" id="modalEmail" name="email" class="form-control" placeholder="you@company.com" required autocomplete="email">
+            <span class="form-field-error" id="errModalEmail" role="alert">Please enter a valid email address.</span>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <!-- 3. Service Required (Required) -->
+          <div class="form-group">
+            <label for="modalService" class="form-label">Service Required <span class="req">*</span></label>
+            <select id="modalService" name="service" class="form-control" required>
+              <option value="" disabled selected>Select a Service</option>
+              <option value="Website Development">Website Development</option>
+              <option value="Business Software / ERP">Business Software / ERP</option>
+              <option value="UI/UX Design">UI/UX Design</option>
+              <option value="Packaging & Label Design">Packaging & Label Design</option>
+              <option value="Digital Marketing">Digital Marketing</option>
+              <option value="Technology Consulting">Technology Consulting</option>
+              <option value="Other">Other</option>
+            </select>
+            <span class="form-field-error" id="errModalService" role="alert">Please select the service required.</span>
           </div>
 
-          <div class="form-group" style="margin-bottom:0;">
+          <!-- 5. Phone or WhatsApp (Optional) -->
+          <div class="form-group">
             <label for="modalPhone" class="form-label">Phone or WhatsApp</label>
             <input type="tel" id="modalPhone" name="phone" class="form-control" placeholder="+91 ...">
           </div>
+        </div>
 
-          <div class="form-group" style="margin-bottom:0;">
-            <label for="modalService" class="form-label">Service Required</label>
-            <select id="modalService" name="service" class="form-control">
-              <option value="Website Development">Website Development</option>
-              <option value="E-commerce Development">E-commerce Development</option>
-              <option value="ERP & Business Software">ERP & Business Software</option>
-              <option value="UI/UX Design">UI/UX Design</option>
-              <option value="Custom Software & Automation">Custom Software & Automation</option>
-              <option value="Label & Poster designing">Label & Poster designing</option>
-              <option value="Social Media & Digital Marketing">Social Media & Digital Marketing</option>
-              <option value="General Consultation">General Consultation</option>
+        <!-- 4. Project Message (Required) -->
+        <div class="form-group">
+          <label for="modalMessage" class="form-label">Project Message <span class="req">*</span></label>
+          <textarea id="modalMessage" name="message" class="form-control" rows="3" placeholder="Tell us briefly about what you want to build or solve..." required></textarea>
+          <span class="form-field-error" id="errModalMessage" role="alert">Please share a brief description of your project.</span>
+        </div>
+
+        <div class="form-grid-2">
+          <!-- 6. Budget (Optional) -->
+          <div class="form-group">
+            <label for="modalBudget" class="form-label">Estimated Budget</label>
+            <select id="modalBudget" name="budget" class="form-control">
+              <option value="Not decided yet" selected>Select budget range (Optional)</option>
+              <option value="Under ₹10,000">Under ₹10,000</option>
+              <option value="₹10,000–₹25,000">₹10,000–₹25,000</option>
+              <option value="₹25,000–₹50,000">₹25,000–₹50,000</option>
+              <option value="₹50,000–₹1,00,000">₹50,000–₹1,00,000</option>
+              <option value="Above ₹1,00,000">Above ₹1,00,000</option>
+              <option value="Not decided yet">Not decided yet</option>
             </select>
           </div>
 
-          <div class="form-group" style="margin-bottom:0;">
-            <label for="modalMessage" class="form-label">Project Message <span class="req">*</span></label>
-            <textarea id="modalMessage" name="message" class="form-control" rows="3" placeholder="Tell us briefly about what you want to build or solve..." required></textarea>
+          <!-- 7. Timeline (Optional) -->
+          <div class="form-group">
+            <label for="modalTimeline" class="form-label">Timeline</label>
+            <select id="modalTimeline" name="timeline" class="form-control">
+              <option value="Flexible / Not decided" selected>Select timeline (Optional)</option>
+              <option value="Immediately">Immediately</option>
+              <option value="Within 2 weeks">Within 2 weeks</option>
+              <option value="Within a month">Within a month</option>
+              <option value="Within 1–3 months">Within 1–3 months</option>
+              <option value="Flexible / Not decided">Flexible / Not decided</option>
+            </select>
           </div>
-
-          <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top: 6px;">
-            <span>Submit Request</span>
-            <span class="btn-arrow" aria-hidden="true">→</span>
-          </button>
         </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg" id="modalSubmitBtn" style="margin-top: 6px;">
+          <span>Submit Inquiry</span>
+          <span class="btn-arrow" aria-hidden="true">→</span>
+        </button>
+
+        <p class="form-privacy-note">
+          Privacy Notice: We respect your privacy. Your information is strictly used to discuss your project requirements and is never shared.
+        </p>
+
+        <!-- Feedback Alerts -->
+        <div id="modalSuccessAlert" class="form-feedback-alert alert-success" role="status" aria-live="polite">
+          <div>
+            <strong>Thank you! Your inquiry has been received. We'll get back to you soon.</strong>
+          </div>
+        </div>
+
+        <div id="modalErrorAlert" class="form-feedback-alert alert-error" role="alert" aria-live="assertive">
+          <div>
+            <strong>We couldn't send your inquiry right now. Please try again or contact us directly.</strong><br>
+            <span style="font-size: 0.82rem; margin-top: 4px; display: inline-block;">
+              Email: <a href="mailto:weboraatechnologies@gmail.com" style="text-decoration:underline;">weboraatechnologies@gmail.com</a> • WhatsApp: <a href="tel:+918929099993" style="text-decoration:underline;">+91 89290 99993</a>
+            </span>
+          </div>
+        </div>
+
       </form>
-
-      <div id="modalSuccessAlert" class="form-feedback-alert alert-success" role="status" aria-live="polite" style="margin-top: 14px;">
-        <div>
-          <strong>Request Received.</strong> Thank you! We will review your message and respond within 4–6 business hours.
-        </div>
-      </div>
     </div>
   </div>
 
   <!-- Scripts -->
-  <script src="script.js?v=5.0"></script>
+  <script src="script.js?v=6.0"></script>
 </body>
 </html>
