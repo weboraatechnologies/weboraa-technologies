@@ -272,6 +272,8 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.innerHTML = '<span>Sending quote request...</span>';
       submitBtn.disabled = true;
 
+      let isSuccess = false;
+
       try {
         const formData = new FormData(modalInquiryForm);
         // Anti-spam check
@@ -294,23 +296,30 @@ document.addEventListener('DOMContentLoaded', () => {
           body: formData
         });
 
-        const result = await response.json().catch(() => ({}));
-        console.log('Modal quote request result:', result);
+        if (response.ok) {
+          isSuccess = true;
+        } else {
+          console.error('Modal submission returned status:', response.status);
+        }
       } catch (err) {
         console.warn('Form submission notice:', err);
       } finally {
         submitBtn.innerHTML = origText;
         submitBtn.disabled = false;
-        modalInquiryForm.reset();
 
-        if (modalSuccessAlert) {
-          modalSuccessAlert.style.display = 'flex';
-          setTimeout(() => {
-            modalSuccessAlert.style.display = 'none';
+        if (isSuccess) {
+          modalInquiryForm.reset();
+          if (modalSuccessAlert) {
+            modalSuccessAlert.style.display = 'flex';
+            setTimeout(() => {
+              modalSuccessAlert.style.display = 'none';
+              closeConversationModal();
+            }, 3000);
+          } else {
             closeConversationModal();
-          }, 3200);
+          }
         } else {
-          closeConversationModal();
+          alert('We encountered an issue submitting your request. Please email us directly at weboraatechnologies@gmail.com or WhatsApp +91 89290 99993.');
         }
       }
     });
@@ -414,6 +423,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --------------------------------------------------------------------------
   const contactForm = document.getElementById('projectInquiryForm');
   const formSuccessAlert = document.getElementById('formSuccessAlert');
+  const formErrorAlert = document.getElementById('formErrorAlert');
 
   if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
@@ -428,6 +438,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const name = document.getElementById('contactName');
       const email = document.getElementById('contactEmail');
+      const service = document.getElementById('contactService');
       const message = document.getElementById('contactMessage');
       const submitBtn = contactForm.querySelector('button[type="submit"]');
 
@@ -443,6 +454,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
+      if (service && !service.value) {
+        alert('Please select the service required.');
+        service.focus();
+        return;
+      }
+
       if (!message || !message.value.trim()) {
         alert('Please tell us about your project requirements.');
         if (message) message.focus();
@@ -452,6 +469,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const originalBtnHTML = submitBtn.innerHTML;
       submitBtn.innerHTML = '<span>Sending inquiry...</span>';
       submitBtn.disabled = true;
+
+      let isSuccess = false;
 
       try {
         const formData = new FormData(contactForm);
@@ -474,20 +493,31 @@ document.addEventListener('DOMContentLoaded', () => {
           body: formData
         });
 
-        const result = await response.json().catch(() => ({}));
-        console.log('Project inquiry result:', result);
+        if (response.ok) {
+          isSuccess = true;
+        } else {
+          console.error('Project inquiry submission returned status:', response.status);
+        }
       } catch (err) {
-        console.warn('Form submission notice:', err);
+        console.warn('Form submission network error:', err);
       } finally {
         submitBtn.innerHTML = originalBtnHTML;
         submitBtn.disabled = false;
 
-        if (formSuccessAlert) {
-          formSuccessAlert.style.display = 'flex';
-          formSuccessAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        if (isSuccess) {
+          if (formSuccessAlert) {
+            formSuccessAlert.style.display = 'flex';
+            formSuccessAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+          if (formErrorAlert) formErrorAlert.style.display = 'none';
+          contactForm.reset();
+        } else {
+          if (formErrorAlert) {
+            formErrorAlert.style.display = 'flex';
+            formErrorAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+          if (formSuccessAlert) formSuccessAlert.style.display = 'none';
         }
-
-        contactForm.reset();
       }
     });
   }
