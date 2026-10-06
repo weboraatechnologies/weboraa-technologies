@@ -213,6 +213,15 @@ document.addEventListener('DOMContentLoaded', () => {
   function openConversationModal(serviceName, triggerEl) {
     if (!conversationModal) return;
 
+    // Close mobile nav drawer if open
+    if (navMenu && navMenu.classList.contains('is-open')) {
+      navMenu.classList.remove('is-open');
+      if (mobileToggle) {
+        mobileToggle.classList.remove('is-active');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+      }
+    }
+
     // Track active trigger for accessible focus return
     if (triggerEl) {
       lastActiveTrigger = triggerEl;

@@ -123,7 +123,7 @@
       color: var(--text-body);
       background-color: var(--bg-surface);
       line-height: 1.65;
-      overflow-x: hidden;
+      overflow-x: clip;
       font-size: 1rem;
     }
 
@@ -680,120 +680,45 @@
     }
 
     .contact-box-wrap {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: var(--space-8);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 36px;
       background: #FFFFFF;
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: var(--space-6);
+      padding: 48px 44px;
       box-shadow: var(--shadow-sm);
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .contact-main-col {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      align-items: flex-start;
+      text-align: left;
+      max-width: 580px;
+    }
+
+    .contact-main-col .section-heading {
+      margin-bottom: 8px;
+    }
+
+    .contact-main-col .section-subtext {
+      margin: 0;
     }
 
     .contact-cta-row {
       display: flex;
       align-items: center;
       gap: 14px;
-      margin-top: var(--space-4);
+      flex-shrink: 0;
       flex-wrap: wrap;
     }
 
-    .contact-details-col {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      background: var(--bg-soft);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 24px;
-    }
-
-    .contact-detail-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .contact-detail-item:last-of-type {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .contact-detail-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .contact-detail-value {
-      font-size: 0.96rem;
-      font-weight: 600;
-      color: var(--text-heading);
-    }
-
-    .copy-chip-btn {
-      background: #FFFFFF;
-      border: 1px solid var(--border);
-      padding: 4px 10px;
-      border-radius: var(--radius-sm);
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--primary);
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-
-    .copy-chip-btn:hover {
-      background: var(--primary-subtle);
-      border-color: var(--primary-border);
-    }
-
-    .copy-chip-btn.is-copied {
-      background: var(--success-subtle);
-      color: var(--success);
-      border-color: #A7F3D0;
-    }
-
-    .contact-response-note {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-      padding-top: 10px;
-      border-top: 1px solid var(--border);
-    }
-
-    .contact-social-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 4px;
-    }
-
-    .social-link-pill {
-      font-size: 0.82rem;
-      color: var(--text-body);
-      background: #FFFFFF;
-      border: 1px solid var(--border);
-      padding: 4px 12px;
-      border-radius: var(--radius-pill);
-      transition: all 0.15s ease;
-    }
-
-    .social-link-pill:hover {
-      color: var(--primary);
-      border-color: var(--primary-border);
+    .mobile-nav-cta-item {
+      display: none;
     }
 
     /* ==========================================================================
@@ -1065,12 +990,13 @@
     }
 
     /* ==========================================================================
-       RESPONSIVE BREAKPOINTS (360px, 390px, 768px, 1024px, 1440px)
+       RESPONSIVE BREAKPOINTS (360px, 480px, 768px, 1024px)
        ========================================================================== */
     @media (max-width: 1024px) {
       .service-row-link {
         grid-template-columns: 200px 1fr 120px;
         gap: 16px;
+        padding: 22px 24px;
       }
 
       .about-grid {
@@ -1083,8 +1009,7 @@
       }
 
       .contact-box-wrap {
-        grid-template-columns: 1fr;
-        gap: var(--space-6);
+        padding: 40px 32px;
       }
 
       .footer-grid {
@@ -1093,65 +1018,184 @@
     }
 
     @media (max-width: 768px) {
-      .hero-cta-group {
-        flex-direction: column;
-        width: 100%;
-      }
-
-      .hero-cta-group .btn {
-        width: 100%;
-        max-width: 320px;
+      .container {
+        padding: 0 20px;
       }
 
       .section-padding {
-        padding: var(--space-8) 0;
+        padding: 56px 0;
+      }
+
+      /* Header */
+      /* Header */
+      .nav-container {
+        height: 60px;
+      }
+
+      .brand-link {
+        display: inline-flex;
+        align-items: center;
+        flex-shrink: 0;
+      }
+
+      .brand-logo-img {
+        height: 26px;
+        width: auto;
+        max-width: 150px;
+        object-fit: contain;
+        display: block;
+      }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 0;
+      }
+
+      .nav-actions .btn {
+        display: none !important;
       }
 
       .mobile-toggle {
         display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        padding: 8px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 101;
       }
 
       .nav-menu {
         position: fixed;
-        top: 70px;
+        top: 60px;
         left: 0;
         width: 100%;
         background: #FFFFFF;
         flex-direction: column;
         align-items: flex-start;
-        padding: 24px;
-        gap: 18px;
+        padding: 20px 20px 24px;
+        gap: 16px;
         border-bottom: 1px solid var(--border);
-        box-shadow: 0 8px 24px rgba(16, 29, 45, 0.08);
-        transform: translateY(-110%);
-        transition: transform 0.25s ease;
+        box-shadow: 0 12px 32px rgba(16, 29, 45, 0.12);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(-16px);
+        transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
         z-index: 99;
+        box-sizing: border-box;
       }
 
       .nav-menu.is-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
         transform: translateY(0);
       }
 
+      .nav-link {
+        font-size: 16px;
+        padding: 8px 0;
+        display: block;
+        width: 100%;
+      }
+
+      .mobile-nav-cta-item {
+        display: block;
+        width: 100%;
+        margin-top: 6px;
+        padding-top: 14px;
+        border-top: 1px solid var(--border);
+      }
+
+      .mobile-nav-cta-item .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* Hero */
+      .hero-section {
+        padding: 56px 0 52px;
+      }
+
+      .hero-headline {
+        font-size: clamp(1.9rem, 6.2vw, 2.7rem);
+        line-height: 1.2;
+        margin-bottom: 16px;
+      }
+
+      .hero-supporting-text {
+        font-size: 1.02rem;
+        line-height: 1.6;
+        margin-bottom: 26px;
+      }
+
+      .hero-cta-group {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .hero-cta-group .btn {
+        width: 100%;
+        max-width: 320px;
+        justify-content: center;
+      }
+
+      /* Services */
       .service-row-link {
         grid-template-columns: 1fr;
         gap: 8px;
-        padding: 18px 20px;
+        padding: 20px;
       }
 
       .service-action-col {
         justify-content: flex-start;
+        margin-top: 2px;
       }
 
+      /* Process */
       .process-track {
         grid-template-columns: 1fr;
       }
 
+      /* Contact Section */
       .contact-box-wrap {
-        padding: 24px;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        padding: 32px 24px;
+        gap: 22px;
       }
 
+      .contact-main-col {
+        max-width: 100%;
+        width: 100%;
+        align-items: flex-start;
+        text-align: left;
+      }
+
+      .contact-cta-row {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
+
+      .contact-cta-row .btn {
+        width: 100%;
+        max-width: 320px;
+        justify-content: center;
+      }
+
+      /* Modal */
       .modal-box {
-        padding: 24px 20px;
+        padding: 28px 22px;
       }
 
       .form-grid-2 {
@@ -1164,35 +1208,155 @@
         padding: 0 16px;
       }
 
-      .hero-headline {
-        font-size: 2.2rem;
+      .section-padding {
+        padding: 44px 0;
       }
 
-      .hero-cta-group {
-        flex-direction: column;
-        width: 100%;
+      /* Header */
+      .nav-container {
+        height: 56px;
+      }
+
+      .brand-logo-img {
+        height: 24px;
+        max-width: 135px;
+      }
+
+      .nav-menu {
+        top: 56px;
+        padding: 18px 16px 20px;
+      }
+
+      /* Hero */
+      .hero-section {
+        padding: 46px 0 42px;
+      }
+
+      .hero-eyebrow {
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        padding: 5px 12px;
+        margin-bottom: 16px;
+      }
+
+      .hero-headline {
+        font-size: clamp(1.65rem, 7.2vw, 2.15rem);
+        line-height: 1.22;
+        margin-bottom: 14px;
+      }
+
+      .hero-supporting-text {
+        font-size: 0.95rem;
+        line-height: 1.55;
+        margin-bottom: 22px;
       }
 
       .hero-cta-group .btn {
-        width: 100%;
+        max-width: 100%;
+        padding: 12px 18px;
+        font-size: 14.5px;
       }
 
-      .contact-cta-row {
-        flex-direction: column;
-        width: 100%;
+      /* Services */
+      .service-row-link {
+        padding: 16px;
+      }
+
+      .service-name {
+        font-size: 1.05rem;
+      }
+
+      .service-desc {
+        font-size: 0.9rem;
+      }
+
+      /* About & Process */
+      .about-pillars-box {
+        padding: 16px 14px;
+      }
+
+      .process-step {
+        padding: 18px 16px;
+      }
+
+      /* Contact Section */
+      .contact-box-wrap {
+        padding: 24px 18px;
+      }
+
+      .contact-main-col .section-heading {
+        font-size: 1.6rem;
+      }
+
+      .contact-main-col .section-subtext {
+        font-size: 0.94rem;
+        line-height: 1.55;
       }
 
       .contact-cta-row .btn {
-        width: 100%;
+        max-width: 100%;
+        padding: 12px 18px;
+        font-size: 14.5px;
       }
 
+      /* Modal */
+      .modal-box {
+        padding: 22px 16px;
+        max-height: 92vh;
+      }
+
+      .modal-title {
+        font-size: 1.25rem;
+      }
+
+      .modal-subtitle {
+        font-size: 0.88rem;
+      }
+
+      .form-control {
+        font-size: 16px;
+        padding: 10px;
+      }
+
+      /* Footer */
       .footer-grid {
         grid-template-columns: 1fr;
+        gap: 24px;
       }
 
       .footer-bottom-bar {
         flex-direction: column;
         text-align: center;
+        gap: 8px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .container {
+        padding: 0 12px;
+      }
+
+      .brand-logo-img {
+        height: 23px;
+        max-width: 125px;
+      }
+
+      .hero-eyebrow {
+        font-size: 0.68rem;
+        letter-spacing: 0.05em;
+        padding: 4px 10px;
+      }
+
+      .hero-headline {
+        font-size: 1.5rem;
+      }
+
+      .contact-box-wrap {
+        padding: 20px 14px;
+      }
+
+      .contact-main-col .section-heading {
+        font-size: 1.4rem;
       }
     }
 
@@ -1226,6 +1390,12 @@
           <li><a href="#about" class="nav-link">About</a></li>
           <li><a href="#process" class="nav-link">Process</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li class="mobile-nav-cta-item">
+            <button type="button" class="btn btn-primary btn-block" data-open-modal="conversation" data-service="Project Inquiry">
+              <span>Start a Project</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </button>
+          </li>
         </ul>
       </nav>
 
@@ -1498,62 +1668,21 @@
         
         <div class="contact-box-wrap">
           
-          <!-- Left: Narrative & Primary CTAs -->
+          <!-- Left: Narrative -->
           <div class="contact-main-col">
             <h2 class="section-heading" id="contactHeading">Have a project in mind?</h2>
             <p class="section-subtext">Tell us what you're planning. Let's turn your idea into something impactful.</p>
-            
-            <div class="contact-cta-row">
-              <button type="button" class="btn btn-primary btn-lg" data-open-modal="conversation" data-service="Project Inquiry" id="contactStartProjectBtn">
-                <span>Start Your Project</span>
-                <span class="btn-arrow" aria-hidden="true">→</span>
-              </button>
-              <a href="https://wa.me/918929099993?text=Hi%20Weboraa%20Technologies%2C%20I%20have%20a%20project%20in%20mind." target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg">
-                <span>Chat on WhatsApp</span>
-              </a>
-            </div>
           </div>
 
-          <!-- Right: Compact Verified Details -->
-          <div class="contact-details-col">
-            
-            <!-- Direct Email -->
-            <div class="contact-detail-item">
-              <div>
-                <div class="contact-detail-label">Direct Email</div>
-                <a href="mailto:weboraatechnologies@gmail.com" class="contact-detail-value">weboraatechnologies@gmail.com</a>
-              </div>
-              <button type="button" class="copy-chip-btn" id="copyEmailBtn" aria-label="Copy email address">
-                <span class="copy-text">Copy</span>
-              </button>
-            </div>
-
-            <!-- Phone & WhatsApp -->
-            <div class="contact-detail-item">
-              <div>
-                <div class="contact-detail-label">Phone & WhatsApp</div>
-                <a href="tel:+918929099993" class="contact-detail-value">+91 89290 99993</a>
-              </div>
-            </div>
-
-            <!-- Location -->
-            <div class="contact-detail-item">
-              <div>
-                <div class="contact-detail-label">Location</div>
-                <div class="contact-detail-value">Coimbatore, Tamil Nadu, India</div>
-              </div>
-            </div>
-
-            <!-- Response Note & Social Links -->
-            <div class="contact-response-note">
-              Every inquiry is reviewed directly by our engineering lead. We typically respond within <strong>4 to 6 business hours</strong>.
-              <div class="contact-social-row" style="margin-top: 10px;">
-                <a href="https://wa.me/918929099993" target="_blank" rel="noopener noreferrer" class="social-link-pill">WhatsApp</a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link-pill">LinkedIn</a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link-pill">Instagram</a>
-              </div>
-            </div>
-
+          <!-- Action CTAs -->
+          <div class="contact-cta-row">
+            <button type="button" class="btn btn-primary btn-lg" data-open-modal="conversation" data-service="Project Inquiry" id="contactStartProjectBtn">
+              <span>Start Your Project</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </button>
+            <a href="https://wa.me/918929099993?text=Hi%20Weboraa%20Technologies%2C%20I%20have%20a%20project%20in%20mind." target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg">
+              <span>Chat on WhatsApp</span>
+            </a>
           </div>
 
         </div>
