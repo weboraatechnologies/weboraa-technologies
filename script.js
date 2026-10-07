@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (normalized.includes('ui') || normalized.includes('ux') || normalized.includes('design')) {
           setSelectByValue(modalServiceSelect, 'UI/UX Design');
         } else if (normalized.includes('label') || normalized.includes('pack') || normalized.includes('poster')) {
-          setSelectByValue(modalServiceSelect, 'Packaging & Label Design');
+          setSelectByValue(modalServiceSelect, 'Label & Poster Design');
         } else if (normalized.includes('market') || normalized.includes('seo')) {
           setSelectByValue(modalServiceSelect, 'Digital Marketing');
         } else if (normalized.includes('consult')) {
@@ -639,4 +639,55 @@ document.addEventListener('DOMContentLoaded', () => {
   if (currentYearEl) {
     currentYearEl.textContent = new Date().getFullYear();
   }
+
+  // --------------------------------------------------------------------------
+  // 8. Hero Subtle Abstract Digital Network Parallax
+  // --------------------------------------------------------------------------
+  (function initHeroNetworkParallax() {
+    const hero = document.getElementById('hero');
+    const svgNet = document.querySelector('.hero-network-svg');
+    const auraL = document.querySelector('.hero-aura-left');
+    const auraR = document.querySelector('.hero-aura-right');
+
+    if (!hero || !svgNet) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let isTracking = false;
+
+    hero.addEventListener('mouseenter', () => {
+      isTracking = true;
+    });
+
+    hero.addEventListener('mousemove', (e) => {
+      const rect = hero.getBoundingClientRect();
+      const relX = (e.clientX - rect.left) / rect.width - 0.5;
+      const relY = (e.clientY - rect.top) / rect.height - 0.5;
+      targetX = relX * 16;
+      targetY = relY * 12;
+    }, { passive: true });
+
+    hero.addEventListener('mouseleave', () => {
+      targetX = 0;
+      targetY = 0;
+    });
+
+    function renderParallax() {
+      if (Math.abs(targetX - currentX) > 0.01 || Math.abs(targetY - currentY) > 0.01 || isTracking) {
+        currentX += (targetX - currentX) * 0.06;
+        currentY += (targetY - currentY) * 0.06;
+
+        svgNet.style.transform = `translateX(calc(-50% + ${currentX.toFixed(2)}px)) translateY(${currentY.toFixed(2)}px)`;
+        if (auraL) auraL.style.transform = `translate(${(currentX * 0.7).toFixed(2)}px, ${(currentY * 0.7).toFixed(2)}px)`;
+        if (auraR) auraR.style.transform = `translate(${(-currentX * 0.7).toFixed(2)}px, ${(currentY * 0.7).toFixed(2)}px)`;
+      }
+
+      requestAnimationFrame(renderParallax);
+    }
+
+    requestAnimationFrame(renderParallax);
+  })();
 });
